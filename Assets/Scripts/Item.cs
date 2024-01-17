@@ -6,27 +6,39 @@ public class Item
 
 public enum ItemType
 {
+    None = 0,
+    
+    Weapons = Ak74 | M4A1,
     //Оружие
-    Ak74 = 0,
-    M4A1 = 1,
+    Ak74 = 701,
+    M4A1 = 702,
     
+    Eat = Soda | Mayo,
     //Еда
-    Soda = 2,
-    Mayo = 3,
+    Soda = 101,
+    Mayo = 102,
     
+    Ammo = Ammo545 | Ammo556,
     //Патроны
-    Ammo545 = 4,
-    Ammo556 = 5,
+    Ammo545 = 201,
+    Ammo556 = 202,
     
+    Trash = Tire | Battery9V,
     //Мусор
-    Tire = 6,
-    Battery9V = 7,
+    Tire = 301,
+    Battery9V = 302,
     
+    Equipment = Helmet | Vest | Backpack,
     //Снаряжение
-    Helmet = 8,
-    Vest = 9,
-    Backpack = 10,
+    Helmet = 401,
+    Vest = 402,
+    Backpack = 403,
     
+    Keys = LabCard,
     //Ключи
-    LabCard = 11
+    LabCard = 501,
+    
+    Money = Roubles,
+    //Деньги
+    Roubles = 601
 }

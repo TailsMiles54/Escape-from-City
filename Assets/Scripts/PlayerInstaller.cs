@@ -8,7 +8,8 @@ public class PlayerInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        var playerInstance = Container.InstantiatePrefabForComponent<Player>(_player, transform.position, quaternion.identity, null);
+        var playerInstance = Container
+            .InstantiatePrefabForComponent<Player>(_player, transform.position, quaternion.identity, null);
 
         Container.Bind<Player>().FromInstance(playerInstance).AsSingle().NonLazy();
         Container.QueueForInject(playerInstance);
