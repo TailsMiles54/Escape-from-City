@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class Test : MonoBehaviour
+public class TestSystem : MonoBehaviour
 {
     [Inject] private Player _player;
     
