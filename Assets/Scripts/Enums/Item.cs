@@ -6,6 +6,7 @@ public class Item
     public int Value;
 }
 
+[Flags]
 public enum ItemType
 {
     None = 0,
