@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089f5e942e394ac4883d049b4178d4f5, type: 3}
   m_Name: SettingsProvider
   m_EditorClassIdentifier: 
+  _settingsList:
+  - {fileID: 11400000, guid: b174bb2408f20fe4ea738cb38cafc07b, type: 2}
+  - {fileID: 11400000, guid: e0cf005c4b1b10a45b4e16190caa9dc8, type: 2}
+  - {fileID: 11400000, guid: 696669cc61ba7b84899ec205e4302565, type: 2}
+  - {fileID: 11400000, guid: 389abef7a9957184bbb0ae095c3c7e70, type: 2}
