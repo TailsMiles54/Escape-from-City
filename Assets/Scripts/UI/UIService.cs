@@ -8,15 +8,9 @@ public class UIService : MonoBehaviour
     [SerializeField] private Transform _contentViewTransform;
     [SerializeField] private TMP_Text _moneyTMP;
     
-    private Player _player;
+    [Inject] private Player _player;
 
-    [Inject]
-    public void Construct(Player player)
-    {
-        _player = player;
-    }
-
-    private void Awake()
+    private void Start()
     {
         _player.Inventory.ItemAddedEvent += UpdateMoneyText;
     }
@@ -54,7 +48,7 @@ public enum NavigationElementType
     
     AllStats = 101,
     Skills = 102,
-    PMCstats = 103,
+    PMCStats = 103,
     TrampStats = 104,
     Items = 105,
     NPC = 106,

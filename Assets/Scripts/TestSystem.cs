@@ -9,6 +9,6 @@ public class TestSystem : MonoBehaviour
     
     void Update()
     {
-        _player.Test(Time.deltaTime.ToString());
+        //_player.Test(Time.deltaTime.ToString());
     }
 }

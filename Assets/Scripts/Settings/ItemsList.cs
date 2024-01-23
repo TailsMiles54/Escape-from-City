@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Settings
@@ -12,5 +13,7 @@ namespace Settings
         {
             Items.Add(itemSetting);
         }
+
+        public ItemSettings GetItem(ItemType itemType) => Items.First(x => x.ItemType == itemType);
     }
 }
