@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,9 @@ public class UIService : MonoBehaviour
     [SerializeField] private TMP_Text _moneyTMP;
     
     [Inject] private Player _player;
+    [Inject] private NavigationController _navigationController;
+
+    private List<BasePanel> _panels = new List<BasePanel>();
 
     private void Start()
     {
@@ -33,11 +37,17 @@ public class UIService : MonoBehaviour
 
         foreach (var childElement in childElements)
         {
-            // проверять доступность элементов
+            if (_navigationController.IsActive(childElement))
+            {
+                var prefab = _navigationController.GetPanel(navigationElementType);
+                var panel = Instantiate(prefab, _contentViewTransform);
+                _panels.Add(panel);
+            }
         }
     }
 }
 
+[Serializable]
 public enum NavigationElementType
 {
     Profile = 0,

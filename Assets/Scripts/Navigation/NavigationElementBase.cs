@@ -1,5 +1,9 @@
-public interface INavigationElement
+using UnityEngine;
+
+public class NavigationElementBase
 {
+    public NavigationElementType ThisNavigationElementType;
+    
     public virtual bool IsActive()
     {
         return false;
@@ -13,5 +17,10 @@ public interface INavigationElement
     public virtual void OnClick()
     {
         
+    }
+
+    public virtual BasePanel CreatePanel()
+    {
+        return null;
     }
 }

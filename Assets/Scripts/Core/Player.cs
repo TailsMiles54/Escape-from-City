@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     
     private int Level;
     private int Exp;
-    public Inventory Inventory { get; private set; }
+    public Inventory Inventory { get; private set; } = new Inventory();
     
     private List<Skill> _skills;
     private List<Parameter> _parameters;
