@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd12073e4b241f082f912316fa2b4f6, type: 3}
   m_Name: PrefabSettings
   m_EditorClassIdentifier: 
-  _panels: []
+  _panels:
+  - {fileID: 5599884421664443686, guid: f75920848dfe1d6489499b1dee36f164, type: 3}
+  - {fileID: 4422064100868359087, guid: 1f67de0fa7c56824fa1bf2dc33f8ca74, type: 3}
+  - {fileID: 6716845429948516732, guid: dec7f7d0b6de79246a6a39076bc9470c, type: 3}
+  - {fileID: 9006568843239007565, guid: 5254fc555721ff94a8e7d228a862279e, type: 3}
+  - {fileID: 1743238195231162099, guid: 77e59463e3bbd4b4eae065d9f1fd77b3, type: 3}
+  <InventoryElement>k__BackingField: {fileID: 398986529343319107, guid: 2c5437b8291d6f74b8f2bd15cbb80ca1, type: 3}

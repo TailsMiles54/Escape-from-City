@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class NavigationController
 {
-    public List<NavigationElementBase> NavigationElements;
-
-    public NavigationController()
+    public List<NavigationElementBase> NavigationElements = new List<NavigationElementBase>()
     {
-        NavigationElements = new List<NavigationElementBase>()
-        {
-            new AllStatsNavigationElementBase()
-        };
-    }
+        new AllStatsNavigationElementBase()
+    };
 
     public bool IsActive(NavigationElementType navigationElementType) => NavigationElements
         .First(x => x.ThisNavigationElementType == navigationElementType).IsActive();

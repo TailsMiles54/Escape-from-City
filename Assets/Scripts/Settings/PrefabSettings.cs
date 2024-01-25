@@ -7,7 +7,7 @@ public class PrefabSettings : ScriptableObject
 {
     [SerializeField] private List<BasePanel> _panels;
 
-    [SerializeField] public InventoryElement InventoryElement { get; private set; }
+    [field: SerializeField] public InventoryElement InventoryElement { get; private set; }
     
     public T GetPanel<T>() where T : BasePanel
     {
