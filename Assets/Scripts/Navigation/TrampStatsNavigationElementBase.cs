@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
-public class AllStatsNavigationElementBase : NavigationElementBase
+public class TrampStatsNavigationElementBase : NavigationElementBase 
 {
-    public AllStatsNavigationElementBase()
+    public TrampStatsNavigationElementBase() 
     {
-        ThisNavigationElementType = NavigationElementType.AllStats;
-    }
+        ThisNavigationElementType = NavigationElementType.TrampStats; 
+    } 
     
-    public override bool IsActive()
-    {
-        return true;
-    }
+    public override bool IsActive() 
+    { 
+        return true; 
+    } 
 
     public override BasePanel CreatePanel(Transform transformParent, Player player)
     {
@@ -20,11 +20,11 @@ public class AllStatsNavigationElementBase : NavigationElementBase
         var panel = Object.Instantiate(prefab, transformParent);
         panel.Setup(new StatsPanelSettings
         {
-            TitleText = "AllStats",
+            TitleText = "Статистика бродяги",
             StatsElements = new List<(string, string)>
             {
-                ("Test1", "Test2"),
-                ("Test3", "Test3"),
+                ("Убитый", "1 раз"),
+                ("Убил", "2 раза"),
             }
         });
         return panel;

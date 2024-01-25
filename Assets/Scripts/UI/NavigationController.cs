@@ -1,14 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class NavigationController
 {
-    public List<NavigationElementBase> NavigationElements = new List<NavigationElementBase>()
+    [Inject] private Player _player;
+    
+    private List<NavigationElementBase> NavigationElements = new List<NavigationElementBase>()
     {
-        new AllStatsNavigationElementBase()
+        new AllStatsNavigationElementBase(),
+        new SkillsNavigationElementBase(),
+        new PMCStatsNavigationElementBase(),
+        new TrampStatsNavigationElementBase(),
+        new ItemsNavigationElementBase(),
+        new NpcNavigationElementBase(),
+        new ShelterElementsNavigationElementBase(),
+        new RaidStartNavigationElementBase(),
+        new RaidProcessNavigationElementBase(),
     };
-
+    
     public bool IsActive(NavigationElementType navigationElementType)
     {
         if (NavigationElements.All(x => x.ThisNavigationElementType != navigationElementType))
@@ -24,6 +35,6 @@ public class NavigationController
     public BasePanel GetPanel(NavigationElementType navigationElementType, Transform transformParent)
     {
         return NavigationElements
-            .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel(transformParent);
+            .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel(transformParent, _player);
     }
 }

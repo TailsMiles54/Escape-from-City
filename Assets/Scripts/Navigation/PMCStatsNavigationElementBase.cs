@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
-public class AllStatsNavigationElementBase : NavigationElementBase
+public class PMCStatsNavigationElementBase : NavigationElementBase 
 {
-    public AllStatsNavigationElementBase()
+    public PMCStatsNavigationElementBase() 
     {
-        ThisNavigationElementType = NavigationElementType.AllStats;
-    }
+        ThisNavigationElementType = NavigationElementType.PMCStats; 
+    } 
     
-    public override bool IsActive()
-    {
-        return true;
-    }
+    public override bool IsActive() 
+    { 
+        return true; 
+    } 
 
     public override BasePanel CreatePanel(Transform transformParent, Player player)
     {
@@ -20,11 +20,11 @@ public class AllStatsNavigationElementBase : NavigationElementBase
         var panel = Object.Instantiate(prefab, transformParent);
         panel.Setup(new StatsPanelSettings
         {
-            TitleText = "AllStats",
+            TitleText = "ЧВК стата",
             StatsElements = new List<(string, string)>
             {
-                ("Test1", "Test2"),
-                ("Test3", "Test3"),
+                ("Рейдов", "2"),
+                ("Выжил", "1"),
             }
         });
         return panel;

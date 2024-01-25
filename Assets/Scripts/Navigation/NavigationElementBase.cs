@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class NavigationElementBase
 {
@@ -19,7 +20,7 @@ public class NavigationElementBase
         
     }
 
-    public virtual BasePanel CreatePanel(Transform transformParent)
+    public virtual BasePanel CreatePanel(Transform transformParent, Player player)
     {
         return null;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
     private string Name;
     
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
 public class Inventory
 {
-    public List<Item> Items { get; private set; }
+    public List<Item> Items { get; private set; } = new List<Item>();
 
     public event Action<Item> ItemAddedEvent; 
     
