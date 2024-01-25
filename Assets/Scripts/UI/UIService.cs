@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class UIService : MonoBehaviour
@@ -27,23 +28,27 @@ public class UIService : MonoBehaviour
     
     public void TabTransition(NavigationElementType navigationElementType)
     {
-        for (int i = 0; i < _contentViewTransform.transform.childCount; i++)
+        for (int i = _panels.Count-1; _panels.Count > 0 && i >= 0 ; i--)
         {
-            var child = _contentViewTransform.transform.GetChild(0);
-            Destroy(child);
+            var child = _panels[i];
+            Destroy(child.gameObject);
         }
-
+        
+        _panels.Clear();
+        
         var childElements = SettingsProvider.Get<NavigationElementSettingsList>().GetChildElements(navigationElementType);
 
         foreach (var childElement in childElements)
         {
             if (_navigationController.IsActive(childElement))
             {
-                var prefab = _navigationController.GetPanel(childElement);
-                var panel = Instantiate(prefab, _contentViewTransform);
+                var panel = _navigationController.GetPanel(childElement, _contentViewTransform);
                 _panels.Add(panel);
             }
         }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)_contentViewTransform.transform);
+        Canvas.ForceUpdateCanvases();
     }
 }
 

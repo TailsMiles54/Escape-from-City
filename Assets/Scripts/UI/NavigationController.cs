@@ -9,9 +9,21 @@ public class NavigationController
         new AllStatsNavigationElementBase()
     };
 
-    public bool IsActive(NavigationElementType navigationElementType) => NavigationElements
-        .First(x => x.ThisNavigationElementType == navigationElementType).IsActive();
-    
-    public BasePanel GetPanel(NavigationElementType navigationElementType) => NavigationElements
-        .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel();
+    public bool IsActive(NavigationElementType navigationElementType)
+    {
+        if (NavigationElements.All(x => x.ThisNavigationElementType != navigationElementType))
+        {
+            Debug.LogWarning($"NavigationController not contain BaseElement for {navigationElementType}");
+            return false;
+        }
+        
+        return NavigationElements
+            .First(x => x.ThisNavigationElementType == navigationElementType).IsActive();
+    }
+
+    public BasePanel GetPanel(NavigationElementType navigationElementType, Transform transformParent)
+    {
+        return NavigationElements
+            .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel(transformParent);
+    }
 }

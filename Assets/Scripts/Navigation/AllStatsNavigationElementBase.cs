@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UI;
+using UnityEngine;
 
 public class AllStatsNavigationElementBase : NavigationElementBase
 {
@@ -13,10 +14,11 @@ public class AllStatsNavigationElementBase : NavigationElementBase
         return true;
     }
 
-    public override BasePanel CreatePanel()
+    public override BasePanel CreatePanel(Transform transformParent)
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<StatsPanel>();
-        prefab.Setup(new StatsPanelSettings
+        var panel = Object.Instantiate(prefab, transformParent);
+        panel.Setup(new StatsPanelSettings
         {
             TitleText = "AllStats",
             StatsElements = new List<(string, string)>
@@ -25,6 +27,6 @@ public class AllStatsNavigationElementBase : NavigationElementBase
                 ("Test3", "Test3"),
             }
         });
-        return prefab;
+        return panel;
     }
 }

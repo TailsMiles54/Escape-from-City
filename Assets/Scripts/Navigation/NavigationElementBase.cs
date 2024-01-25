@@ -19,7 +19,12 @@ public class NavigationElementBase
         
     }
 
-    public virtual BasePanel CreatePanel()
+    public virtual BasePanel CreatePanel(Transform transformParent)
+    {
+        return null;
+    }
+
+    public virtual BasePanelSettings GetPanelSettings()
     {
         return null;
     }

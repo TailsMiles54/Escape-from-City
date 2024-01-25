@@ -8,8 +8,8 @@ public class UIControllerInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
-        Container.Bind<UIService>().FromInstance(_uiService).AsSingle().NonLazy();
-        Container.Bind<NavigationController>().FromNew().AsSingle().NonLazy();
+        Container.Bind<UIService>().FromInstance(_uiService).AsCached().NonLazy();
+        Container.Bind<NavigationController>().FromNew().AsCached().NonLazy();
         Container.QueueForInject(_uiService);
     }
 }
