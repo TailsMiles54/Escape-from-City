@@ -39,7 +39,7 @@ public class UIService : MonoBehaviour
         {
             if (_navigationController.IsActive(childElement))
             {
-                var prefab = _navigationController.GetPanel(navigationElementType);
+                var prefab = _navigationController.GetPanel(childElement);
                 var panel = Instantiate(prefab, _contentViewTransform);
                 _panels.Add(panel);
             }

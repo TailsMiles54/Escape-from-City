@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: NavigationElementSettingsList
   m_EditorClassIdentifier: 
   <ChildElements>k__BackingField:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 39776141ba869c546a5cf7af656a0388, type: 2}
+  - {fileID: 11400000, guid: f03b05413d2dcb3449aafdeb0090656a, type: 2}
+  - {fileID: 11400000, guid: c40d2f83ab8542d42b7c5640794a7e91, type: 2}
+  - {fileID: 11400000, guid: 534e247e232b2cf4b8cbb63084cf14f3, type: 2}
+  - {fileID: 11400000, guid: 499d781ab1588534385cde34070b7e45, type: 2}
