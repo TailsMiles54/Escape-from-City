@@ -17,7 +17,7 @@ public class BlackTailsTools : MonoBehaviour
         
         foreach (var itemType in newItems)
         {
-            if(itemType is ItemType.Equipment or ItemType.Ammo or ItemType.Weapons or ItemType.Trash or ItemType.Money or ItemType.Eat or ItemType.None or ItemType.Keys)
+            if(itemType is ItemType.Equipment or ItemType.Ammo or ItemType.Weapons or ItemType.Trash or ItemType.Money or ItemType.Eat or ItemType.None or ItemType.Keys or ItemType.Medicine)
                 continue;
             
             var itemSetting = ItemType.Weapons.HasFlag(itemType)

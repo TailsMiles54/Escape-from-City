@@ -1,5 +1,6 @@
 using System;
 
+[Serializable]
 public class Item
 {
     public ItemType ItemType;
@@ -16,10 +17,11 @@ public enum ItemType
     Ak74 = 701,
     M4A1 = 702,
     
-    Eat = Soda | Mayo,
+    Eat = Soda | Mayo | Clickers,
     //Еда
     Soda = 101,
     Mayo = 102,
+    Clickers = 104,
     
     Ammo = Ammo545 | Ammo556,
     //Патроны
@@ -31,10 +33,10 @@ public enum ItemType
     Tire = 301,
     Battery9V = 302,
     
-    Equipment = Helmet | Vest | Backpack,
+    Equipment = HelmetModul3M | VestModul3M | Backpack,
     //Снаряжение
-    Helmet = 401,
-    Vest = 402,
+    HelmetModul3M = 401,
+    VestModul3M = 402,
     Backpack = 403,
     
     Keys = LabCard,
@@ -43,5 +45,12 @@ public enum ItemType
     
     Money = Roubles,
     //Деньги
-    Roubles = 601
+    Roubles = 601,
+    
+    Medicine = AI | AI2 | Bandage | Tourniquet,
+    //Медицина
+    AI = 701,
+    AI2 = 702,
+    Bandage = 703,
+    Tourniquet = 704,
 }
