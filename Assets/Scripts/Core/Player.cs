@@ -41,9 +41,10 @@ public class Player
     }
 }
 
+[Serializable]
 public class Inventory
 {
-    public int AvailableSlots { get; private set; }
+    public int AvailableSlots;
     public List<Item> Items { get; private set; } = new List<Item>();
 
     public event Action<Item> ItemAddedEvent; 

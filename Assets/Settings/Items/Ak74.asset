@@ -17,6 +17,6 @@ MonoBehaviour:
   <Rarity>k__BackingField: 0
   <ItemType>k__BackingField: 701
   <Sprite>k__BackingField: {fileID: 0}
-  <ItemSize>k__BackingField: 0
-  <MaxInStack>k__BackingField: 0
+  <ItemSize>k__BackingField: 8
+  <MaxInStack>k__BackingField: 1
   <SpriteWithScope>k__BackingField: {fileID: 0}

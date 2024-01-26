@@ -16,6 +16,7 @@ public class SaveManager
             Exp = _player.Exp,
             Skills = _player.Skills,
             Parameters = _player.Parameters,
+            Inventory = _player.Inventory
         };
         
         SaveData(data, "PlayerData.json");

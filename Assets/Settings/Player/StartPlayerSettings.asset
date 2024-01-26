@@ -23,8 +23,16 @@ MonoBehaviour:
     Value: 6
   - ItemType: 104
     Value: 6
-  - ItemType: 401
-    Value: 3
   - ItemType: 402
-    Value: 3
+    Value: 1
+  - ItemType: 402
+    Value: 1
+  - ItemType: 402
+    Value: 1
+  - ItemType: 401
+    Value: 1
+  - ItemType: 401
+    Value: 1
+  - ItemType: 401
+    Value: 1
   <StartedInventorySize>k__BackingField: 120
