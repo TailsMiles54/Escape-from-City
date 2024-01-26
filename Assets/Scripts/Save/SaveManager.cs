@@ -21,19 +21,20 @@ public class SaveManager
         SaveData(data, "PlayerData.json");
     }
 
-    public PlayerSaveData LoadPlayerData()
+    public bool LoadPlayerData(out PlayerSaveData playerSaveData)
     {
         string path = Path.Combine(Application.persistentDataPath, "PlayerData.json");
 
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
-            var saveData = JsonConvert.DeserializeObject<PlayerSaveData>(json);
-            return saveData;
+            playerSaveData = JsonConvert.DeserializeObject<PlayerSaveData>(json);
+            return true;
         }
         else
         {
-            return new PlayerSaveData();
+            playerSaveData = new PlayerSaveData();
+            return false;
         }
     }
     

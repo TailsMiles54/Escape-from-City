@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Zenject;
 
-public class Player : IInitializable
+public class Player
 {
     [Inject] private SaveManager _saveManager;
     
@@ -14,7 +14,7 @@ public class Player : IInitializable
     public Inventory Inventory { get; private set; } = new Inventory();
     public List<Skill> Skills {get; private set;}
     public List<Parameter> Parameters {get; private set;}
-    public int GetMoney() => Inventory.Items.First(x => x.ItemType == ItemType.Money).Value;
+    public int GetMoney() => Inventory.Items.First(x => x.ItemType == ItemType.Roubles).Value;
 
     public void ChangeNickname(string newNickname)
     {
@@ -24,27 +24,26 @@ public class Player : IInitializable
 
     public void SetupFromSave()
     {
-        var saveData = _saveManager.LoadPlayerData();
-        Name = saveData.Name;
-        Level = saveData.Level;
-        Exp = saveData.Exp;
-        Skills = saveData.Skills;
-        Parameters = saveData.Parameters;
-
-        if (saveData == new PlayerSaveData())
+        var saveResult = _saveManager.LoadPlayerData(out PlayerSaveData playerSaveData);
+        
+        Name = playerSaveData.Name;
+        Level = playerSaveData.Level;
+        Exp = playerSaveData.Exp;
+        Skills = playerSaveData.Skills;
+        Parameters = playerSaveData.Parameters;
+        Inventory = playerSaveData.Inventory;
+        
+        if(!saveResult)
         {
+            Inventory.StartSetup();
             _saveManager.SavePlayerData();
         }
-    }
-
-    public void Initialize()
-    {
-        SetupFromSave();
     }
 }
 
 public class Inventory
 {
+    public int AvailableSlots { get; private set; }
     public List<Item> Items { get; private set; } = new List<Item>();
 
     public event Action<Item> ItemAddedEvent; 
@@ -53,5 +52,12 @@ public class Inventory
     {
         Items.Add(item);
         ItemAddedEvent?.Invoke(item);
+    }
+
+    public void StartSetup()
+    {
+        var startSettings = SettingsProvider.Get<StartPlayerSettings>();
+        AvailableSlots = startSettings.StartedInventorySize;
+        Items = startSettings.StartItems;
     }
 }

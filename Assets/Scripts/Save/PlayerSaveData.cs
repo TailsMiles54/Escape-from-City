@@ -9,4 +9,5 @@ public class PlayerSaveData
     public int Exp = 0;
     public List<Skill> Skills = new List<Skill>();
     public List<Parameter> Parameters = new List<Parameter>();
+    public Inventory Inventory = new Inventory();
 }

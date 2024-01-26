@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using Settings;
 using UnityEditor;
@@ -17,10 +18,7 @@ public class BlackTailsTools : MonoBehaviour
         
         foreach (var itemType in newItems)
         {
-            if(itemType is ItemType.Equipment or ItemType.Ammo or ItemType.Weapons or ItemType.Trash or ItemType.Money or ItemType.Eat or ItemType.None or ItemType.Keys or ItemType.Medicine)
-                continue;
-            
-            var itemSetting = ItemType.Weapons.HasFlag(itemType)
+            var itemSetting = itemType is ItemType.Ak74 or ItemType.M4A1  
                 ? ScriptableObject.CreateInstance<WeaponSetting>()
                 : ScriptableObject.CreateInstance<ItemSettings>();
                 
@@ -30,5 +28,27 @@ public class BlackTailsTools : MonoBehaviour
 
             Debug.Log($"{itemType.ToString()}.asset created");
         }
+    }
+    
+    [MenuItem("BlackTailsTools/Очистка сейвов")]
+    static void DeleteSaveFiles()
+    {
+        string savePath = Application.persistentDataPath;
+        string[] saveFiles = Directory.GetFiles(savePath);
+
+        foreach (string file in saveFiles)
+        {
+            File.Delete(file);
+        }
+
+        Debug.Log("Save files deleted successfully.");
+    }
+
+    
+    [MenuItem("BlackTailsTools/Очистка PlayerPrefs")]
+    static void ClearPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("PlayerPrefs cleared successfully.");
     }
 }
