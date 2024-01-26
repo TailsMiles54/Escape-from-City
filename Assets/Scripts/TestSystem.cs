@@ -9,6 +9,12 @@ public class TestSystem : MonoBehaviour
     
     void Update()
     {
-        //_player.Test(Time.deltaTime.ToString());
+        if (Input.GetKey(KeyCode.K))
+        {
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                _player.ChangeNickname("BlackTails");
+            }
+        }
     }
 }

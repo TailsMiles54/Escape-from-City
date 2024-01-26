@@ -2,23 +2,44 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
-public class Player
+public class Player : IInitializable
 {
-    private string Name;
+    [Inject] private SaveManager _saveManager;
     
-    private int Level;
-    private int Exp;
+    public string Name {get; private set;}
+    public int Level {get; private set;}
+    public int Exp {get; private set;}
     public Inventory Inventory { get; private set; } = new Inventory();
-    
-    private List<Skill> _skills;
-    private List<Parameter> _parameters;
-
+    public List<Skill> Skills {get; private set;}
+    public List<Parameter> Parameters {get; private set;}
     public int GetMoney() => Inventory.Items.First(x => x.ItemType == ItemType.Money).Value;
-    
-    public void Test(string text)
+
+    public void ChangeNickname(string newNickname)
     {
-        Debug.Log(text);
+        Name = newNickname;
+        _saveManager.SavePlayerData();
+    }
+
+    public void SetupFromSave()
+    {
+        var saveData = _saveManager.LoadPlayerData();
+        Name = saveData.Name;
+        Level = saveData.Level;
+        Exp = saveData.Exp;
+        Skills = saveData.Skills;
+        Parameters = saveData.Parameters;
+
+        if (saveData == new PlayerSaveData())
+        {
+            _saveManager.SavePlayerData();
+        }
+    }
+
+    public void Initialize()
+    {
+        SetupFromSave();
     }
 }
 

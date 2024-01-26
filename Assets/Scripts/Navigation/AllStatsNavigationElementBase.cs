@@ -23,7 +23,7 @@ public class AllStatsNavigationElementBase : NavigationElementBase
             TitleText = "AllStats",
             StatsElements = new List<(string, string)>
             {
-                ("Test1", "Test2"),
+                ("NickName", player.Name),
                 ("Test3", "Test3"),
             }
         });

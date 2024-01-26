@@ -14,8 +14,8 @@ public class UIService : MonoBehaviour
     [Inject] private NavigationController _navigationController;
 
     private List<BasePanel> _panels = new List<BasePanel>();
-
-    private void Start()
+    
+    public void Start()
     {
         _player.Inventory.ItemAddedEvent += UpdateMoneyText;
     }
