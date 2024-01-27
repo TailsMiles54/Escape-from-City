@@ -1,12 +1,3 @@
-using System;
-
-[Serializable]
-public class Item
-{
-    public ItemType ItemType;
-    public int Value;
-}
-
 public enum ItemType
 {
     None = 0,
