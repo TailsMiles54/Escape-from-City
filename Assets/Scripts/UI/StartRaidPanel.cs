@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -19,5 +20,17 @@ namespace UI
     {
         public string Text;
         public string SecondText;
+    }
+}
+
+public class CharacterPanel : MonoBehaviour
+{
+    [SerializeField] private TMP_Text _nameField;
+    [SerializeField] private Image _image;
+
+    public void Setup(string name, Sprite image)
+    {
+        _nameField.text = name;
+        _image.sprite = image;
     }
 }
