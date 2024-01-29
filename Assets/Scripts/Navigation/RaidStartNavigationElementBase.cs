@@ -1,3 +1,6 @@
+using UI;
+using UnityEngine;
+
 public class RaidStartNavigationElementBase : NavigationElementBase 
 {
     public RaidStartNavigationElementBase() 
@@ -7,6 +10,17 @@ public class RaidStartNavigationElementBase : NavigationElementBase
     
     public override bool IsActive() 
     { 
-        return false; 
+        return true; 
     } 
+
+    public override BasePanel CreatePanel(Transform transformParent, Player player)
+    {
+        var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<StartRaidPanel>();
+        var panel = Object.Instantiate(prefab, transformParent);
+        panel.Setup(new StartRaidPanelSettings()
+        {
+            Player = player
+        });
+        return panel;
+    }
 }

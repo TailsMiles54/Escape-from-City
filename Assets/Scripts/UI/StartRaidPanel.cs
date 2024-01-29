@@ -1,36 +1,34 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using Zenject;
 
 namespace UI
 {
     public class StartRaidPanel : Panel<StartRaidPanelSettings>
     {
-        [SerializeField] private TMP_Text _titleTMP;
-        [SerializeField] private TMP_Text _secondTMP;
+        [SerializeField] private CharacterPanel _characterPanel;
+        [SerializeField] private CharacterPanel _trampPanel;
         
         public override void Setup(StartRaidPanelSettings settings)
         {
-            _titleTMP.text = settings.Text;
-            _secondTMP.text = settings.SecondText;
+            _characterPanel.Setup(settings.Player.Name, SettingsProvider.Get<PrefabSettings>().TestImage, () =>
+            {
+                _characterPanel.Activate(true);
+                _trampPanel.Activate(false);
+            });
+            _characterPanel.Activate(true);
+            
+            _trampPanel.Setup("OLEG EBLAN", SettingsProvider.Get<PrefabSettings>().TestImage, () =>
+            {
+                _characterPanel.Activate(false);
+                _trampPanel.Activate(true);
+            });
+            _trampPanel.Activate(false);
         }
     }
 
     public class StartRaidPanelSettings : BasePanelSettings
     {
-        public string Text;
-        public string SecondText;
-    }
-}
-
-public class CharacterPanel : MonoBehaviour
-{
-    [SerializeField] private TMP_Text _nameField;
-    [SerializeField] private Image _image;
-
-    public void Setup(string name, Sprite image)
-    {
-        _nameField.text = name;
-        _image.sprite = image;
+        public Player Player;
     }
 }
