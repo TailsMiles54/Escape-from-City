@@ -10,6 +10,8 @@ public class PrefabSettings : ScriptableObject
 
     [field: SerializeField] public InventoryElement InventoryElement { get; private set; }
     [field: SerializeField] public Sprite TestImage { get; private set; }
+    [field: SerializeField] public Sprite PMCImage { get; private set; }
+    [field: SerializeField] public Sprite TrampImage { get; private set; }
     
     public T GetPanel<T>() where T : BasePanel
     {
