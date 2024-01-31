@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142982a35dbd4ffe9ea6903f37bbfb73, type: 3}
+  m_Name: LocationsList
+  m_EditorClassIdentifier: 
+  <Locations>k__BackingField:
+  - {fileID: 11400000, guid: 4ba1c840c8dec7b48a60a63ccc3ce662, type: 2}
+  - {fileID: 11400000, guid: 18d71bb6f0f69054cb776ea9591b3ebd, type: 2}
+  - {fileID: 11400000, guid: aaeeb32cbf1ddf14bb34eafa3a8e8c66, type: 2}
+  - {fileID: 11400000, guid: 51b896a16f5e35447978af4207e43c4e, type: 2}
+  - {fileID: 11400000, guid: 9f7b90aade71efc41b6a79505bc140e6, type: 2}
+  - {fileID: 11400000, guid: 27ddcc035c35e9e408612bad0bae23bf, type: 2}
+  - {fileID: 11400000, guid: 5d083f6623a6b49418da1cb39197e0a6, type: 2}

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BlackTailsTools : MonoBehaviour
 {
-    [MenuItem("BlackTailsTools/Создать объекты противников")]
+    [MenuItem("BlackTailsTools/Создать настройки предметов")]
     static void CreateEnemies()
     {
         var itemsList = SettingsProvider.Get<ItemsList>();
@@ -50,5 +50,26 @@ public class BlackTailsTools : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         Debug.Log("PlayerPrefs cleared successfully.");
+    }
+    
+    [MenuItem("BlackTailsTools/Создать настройки локаций")]
+    static void CreateLocations()
+    {
+        var locationsList = SettingsProvider.Get<LocationsList>();
+        var locationsSettings = locationsList.Locations;
+        var addedLocation = locationsSettings.Select(x => x.LocationType);
+        var locationTypes = Enum.GetValues(typeof(LocationType)).Cast<LocationType>().ToList();
+        var newLocations = locationTypes.Except(addedLocation).ToList();
+        
+        foreach (var newLocation in newLocations)
+        {
+            var locationSettings = ScriptableObject.CreateInstance<LocationSettings>();
+                
+            locationSettings.Init(newLocation);
+            AssetDatabase.CreateAsset(locationSettings, $"Assets/Settings/Locations/{newLocation.ToString()}.asset");
+            locationsList.AddItem(locationSettings);
+
+            Debug.Log($"{newLocation.ToString()}.asset created");
+        }
     }
 }

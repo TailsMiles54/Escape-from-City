@@ -6,4 +6,5 @@ public enum LocationType
     Industrial = 3,
     MilitaryBase = 4,
     AbandonedHospital = 5,
+    Swamp = 6,
 }
