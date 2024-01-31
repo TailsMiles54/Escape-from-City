@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Settings;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -10,8 +11,10 @@ namespace UI
     {
         [SerializeField] private CharacterPanel _characterPanel;
         [SerializeField] private CharacterPanel _trampPanel;
-
         [SerializeField] private List<EquipmentPanelSetting> _equipmentPanels;
+        [SerializeField] private Transform _locationsParent;
+        
+        private List<LocationPanel> _locationPanels = new List<LocationPanel>();
         
         public override void Setup(StartRaidPanelSettings settings)
         {
@@ -25,6 +28,21 @@ namespace UI
                     {
                         Debug.Log($"Open {equipmentPanelSetting.ItemCategoryType}");
                     });
+            }
+
+            var locationSettings = SettingsProvider.Get<LocationsList>();
+            foreach (var locationSetting in locationSettings.Locations)
+            {
+                var locationPanelPrefab = SettingsProvider.Get<PrefabSettings>().LocationPanelPrefab;
+                var newLocation = Instantiate(locationPanelPrefab, _locationsParent);
+                newLocation.Setup(locationSetting.Name, locationSetting.Sprite, () =>
+                {
+                    foreach (var locationPanel in _locationPanels)
+                    {
+                        locationPanel.Activate(locationPanel == newLocation);
+                    }
+                });
+                _locationPanels.Add(newLocation);
             }
         }
 
