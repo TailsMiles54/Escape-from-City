@@ -21,3 +21,5 @@ MonoBehaviour:
   - {fileID: 4345356301578096358, guid: eaea5697a86a71141975f787f11764a5, type: 3}
   <InventoryElement>k__BackingField: {fileID: 398986529343319107, guid: 2c5437b8291d6f74b8f2bd15cbb80ca1, type: 3}
   <TestImage>k__BackingField: {fileID: 21300000, guid: 1fa2c7c75ea08d24f9f4678e84af2c88, type: 3}
+  <PMCImage>k__BackingField: {fileID: 21300000, guid: c2ea4805bc6b5ae4c974b98543294567, type: 3}
+  <TrampImage>k__BackingField: {fileID: 21300000, guid: a12a2e83e6ad7f147a616e2c57ee057a, type: 3}
