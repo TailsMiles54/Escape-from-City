@@ -20,7 +20,7 @@ public class NavigationElementBase
         
     }
 
-    public virtual BasePanel CreatePanel(Transform transformParent, Player player)
+    public virtual BasePanel CreatePanel(Transform transformParent, Player player, PopupController popupController)
     {
         return null;
     }

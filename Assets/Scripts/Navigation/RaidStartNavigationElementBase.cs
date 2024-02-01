@@ -13,13 +13,14 @@ public class RaidStartNavigationElementBase : NavigationElementBase
         return true; 
     } 
 
-    public override BasePanel CreatePanel(Transform transformParent, Player player)
+    public override BasePanel CreatePanel(Transform transformParent, Player player, PopupController popupController)
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<StartRaidPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
         panel.Setup(new StartRaidPanelSettings()
         {
-            Player = player
+            Player = player,
+            PopupController = popupController
         });
         return panel;
     }

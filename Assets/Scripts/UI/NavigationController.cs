@@ -6,6 +6,7 @@ using Zenject;
 public class NavigationController
 {
     [Inject] private Player _player;
+    [Inject] private PopupController _popupController;
     
     private List<NavigationElementBase> NavigationElements = new List<NavigationElementBase>()
     {
@@ -35,6 +36,6 @@ public class NavigationController
     public BasePanel GetPanel(NavigationElementType navigationElementType, Transform transformParent)
     {
         return NavigationElements
-            .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel(transformParent, _player);
+            .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel(transformParent, _player, _popupController);
     }
 }

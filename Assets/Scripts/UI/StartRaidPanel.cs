@@ -26,7 +26,7 @@ namespace UI
                     SettingsProvider.Get<PrefabSettings>().TestImage, 
                     () =>
                     {
-                        Debug.Log($"Open {equipmentPanelSetting.ItemCategoryType}");
+                        settings.PopupController.ShowPopup(new SelectItemPopupSetting());
                     });
             }
 
@@ -85,5 +85,6 @@ namespace UI
     public class StartRaidPanelSettings : BasePanelSettings
     {
         public Player Player;
+        public PopupController PopupController;
     }
 }

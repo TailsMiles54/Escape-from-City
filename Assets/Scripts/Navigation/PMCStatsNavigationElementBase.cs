@@ -14,7 +14,7 @@ public class PMCStatsNavigationElementBase : NavigationElementBase
         return true; 
     } 
 
-    public override BasePanel CreatePanel(Transform transformParent, Player player)
+    public override BasePanel CreatePanel(Transform transformParent, Player player, PopupController popupController)
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<StatsPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
