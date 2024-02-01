@@ -55,6 +55,8 @@ namespace UI
                     }
                 });
                 _locationPanels.Add(newLocation);
+
+                newLocation.Activate(_locationPanels.First() == newLocation);
             }
         }
 
