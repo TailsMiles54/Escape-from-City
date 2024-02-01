@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Settings;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace UI
         [SerializeField] private CharacterPanel _characterPanel;
         [SerializeField] private CharacterPanel _trampPanel;
         [SerializeField] private List<EquipmentPanelSetting> _equipmentPanels;
+        [SerializeField] private List<TimePanel> _timePanels;
         [SerializeField] private Transform _locationsParent;
         
         private List<LocationPanel> _locationPanels = new List<LocationPanel>();
@@ -29,6 +31,16 @@ namespace UI
                         Debug.Log($"Open {equipmentPanelSetting.ItemCategoryType}");
                     });
             }
+
+            foreach (var timePanel in _timePanels)
+            {
+                timePanel.Setup((() =>
+                {
+                    _timePanels.ForEach(x => x.Activate(x == timePanel));
+                }));
+            }
+            
+            _timePanels.First().Activate(true);
 
             var locationSettings = SettingsProvider.Get<LocationsList>();
             foreach (var locationSetting in locationSettings.Locations)
