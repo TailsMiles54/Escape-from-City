@@ -14,5 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: City
   <LocationType>k__BackingField: 1
+  <SubLocationSettings>k__BackingField:
+  - {fileID: 11400000, guid: 8748a5608eadf4247a8695d314d5e03f, type: 2}
+  - {fileID: 11400000, guid: a382662b23804eb459450e9785bbebc6, type: 2}
+  - {fileID: 11400000, guid: 982eea25657cce446979ef12d17f2d72, type: 2}
+  - {fileID: 11400000, guid: 578766a0f2f119645aa42e031d14aca4, type: 2}
+  - {fileID: 11400000, guid: ba93557e18f476744a2115eb30f54ca8, type: 2}
+  - {fileID: 11400000, guid: 70da233396608f943bebdf95e268a160, type: 2}
+  - {fileID: 11400000, guid: 377082836a2cea74fa644528c78c6b09, type: 2}
+  - {fileID: 11400000, guid: 649e50dc8ebd07e4a9b578e402ee8f55, type: 2}
+  - {fileID: 11400000, guid: ac4de4ceb13d5dc41927f01550c2c66d, type: 2}
+  - {fileID: 11400000, guid: 63840fb5fc0ae694fb68a3efcd87ef41, type: 2}
+  - {fileID: 11400000, guid: 9a92d4fb9716e7541bc5015ad3bbd00d, type: 2}
+  - {fileID: 11400000, guid: c6a55d951114de84f974b19e8c57a2e5, type: 2}
+  - {fileID: 11400000, guid: 8670f1634c0a1724a8720b31f7e9a000, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
   <LocationTime>k__BackingField: 0

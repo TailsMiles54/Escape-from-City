@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Industrial
   <LocationType>k__BackingField: 3
+  <SubLocationSettings>k__BackingField:
+  - {fileID: 11400000, guid: 0779960452555b345bb588c4e44a93c1, type: 2}
+  - {fileID: 11400000, guid: fa8488fa12f05b14680587ac3b51d6d8, type: 2}
+  - {fileID: 11400000, guid: ec5772bf851836748a67a1954989b07b, type: 2}
+  - {fileID: 11400000, guid: fc9e8b62683c681429fa498854fa5b9a, type: 2}
+  - {fileID: 11400000, guid: 53a548a013b296a4da117c2685c3f3d9, type: 2}
+  - {fileID: 11400000, guid: 926e915ac6eede04b9a0100b2a36e046, type: 2}
+  - {fileID: 11400000, guid: d23f35556fe5b8d45b1856324c8c406c, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
   <LocationTime>k__BackingField: 0

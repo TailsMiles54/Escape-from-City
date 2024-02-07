@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Swamp
   <LocationType>k__BackingField: 6
+  <SubLocationSettings>k__BackingField:
+  - {fileID: 11400000, guid: a02bb802166b6a64286bca6c0a01bb37, type: 2}
+  - {fileID: 11400000, guid: 4c259213b3fa9224c959755000f0c7cd, type: 2}
+  - {fileID: 11400000, guid: 818dd3aacb867a847b892034783dbf4d, type: 2}
+  - {fileID: 11400000, guid: ecb8a0493404dad4ca634716418b0310, type: 2}
+  - {fileID: 11400000, guid: 578f7539b4ae1e2419c970474fc6d913, type: 2}
+  - {fileID: 11400000, guid: 36d6963eddafec047b9375c9b81ab316, type: 2}
+  - {fileID: 11400000, guid: 82a450ce3762e6c4e9c2aee1270bab65, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
   <LocationTime>k__BackingField: 0

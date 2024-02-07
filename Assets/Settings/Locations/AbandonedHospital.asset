@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: AbandonedHospital
   <LocationType>k__BackingField: 5
+  <SubLocationSettings>k__BackingField:
+  - {fileID: 11400000, guid: a01b08ac9fd2778488abcede7d965e1b, type: 2}
+  - {fileID: 11400000, guid: 9e68656bcda7e214190f6260793db38d, type: 2}
+  - {fileID: 11400000, guid: 49aebcd23bd0abe4bbff2364da67d8e4, type: 2}
+  - {fileID: 11400000, guid: 4861b83fb52528447bd687a795845659, type: 2}
+  - {fileID: 11400000, guid: c56385a25bb134348b7862291d630642, type: 2}
+  - {fileID: 11400000, guid: afcf43a20d2371e4e8c0961ee277ab68, type: 2}
+  - {fileID: 11400000, guid: 945a73c587514054e8a242b94224446b, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
   <LocationTime>k__BackingField: 0

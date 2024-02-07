@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Suburb
   <LocationType>k__BackingField: 2
+  <SubLocationSettings>k__BackingField:
+  - {fileID: 11400000, guid: b6531f14cf808814c8879b91427f5b76, type: 2}
+  - {fileID: 11400000, guid: 5b4fc73dadda16a41925fa2e169d1fc0, type: 2}
+  - {fileID: 11400000, guid: 00ce116cc03745641b84385ccf67eda1, type: 2}
+  - {fileID: 11400000, guid: 096199031b9d00a41b6a56752fd8ed8f, type: 2}
+  - {fileID: 11400000, guid: af3833b972fff4d46861c5d59abb27c5, type: 2}
+  - {fileID: 11400000, guid: 501a040c88a35bb40a0341ba2abc1f39, type: 2}
+  - {fileID: 11400000, guid: 3891bbc3cd7ddae448de6f075a3065b8, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
   <LocationTime>k__BackingField: 0

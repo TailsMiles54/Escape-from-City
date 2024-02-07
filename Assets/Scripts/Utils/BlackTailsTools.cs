@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Settings;
@@ -68,6 +69,32 @@ public class BlackTailsTools : MonoBehaviour
             locationSettings.Init(newLocation);
             AssetDatabase.CreateAsset(locationSettings, $"Assets/Settings/Locations/{newLocation.ToString()}.asset");
             locationsList.AddItem(locationSettings);
+
+            Debug.Log($"{newLocation.ToString()}.asset created");
+        }
+    }
+    
+    [MenuItem("BlackTailsTools/Создать настройки сублокаций")]
+    static void CreateSubLocations()
+    {
+        var locationTypes = Enum.GetValues(typeof(LocationType)).Cast<LocationType>().ToList();
+
+        List<SubLocationType> usedSubLocationTypes = new List<SubLocationType>();
+        foreach (var locationType in locationTypes)
+        {
+            var locationSettings = SettingsProvider.Get<LocationsList>().GetLocation(locationType);
+            usedSubLocationTypes.AddRange(locationSettings.SubLocationSettings.Select(x => x.ThisSubLocationType));
+        }
+        
+        var subLocationTypes = Enum.GetValues(typeof(SubLocationType)).Cast<SubLocationType>().ToList();
+        var newLocations = subLocationTypes.Except(usedSubLocationTypes).ToList();
+        
+        foreach (var newLocation in newLocations)
+        {
+            var locationSettings = ScriptableObject.CreateInstance<SubLocationSettings>();
+                
+            locationSettings.Init(newLocation);
+            AssetDatabase.CreateAsset(locationSettings, $"Assets/Settings/SubLocations/{newLocation.ToString()}.asset");
 
             Debug.Log($"{newLocation.ToString()}.asset created");
         }

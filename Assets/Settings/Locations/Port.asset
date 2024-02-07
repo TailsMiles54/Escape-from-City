@@ -14,5 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Port
   <LocationType>k__BackingField: 0
+  <SubLocationSettings>k__BackingField:
+  - {fileID: 11400000, guid: 72021a998d4d8be4aa910e33931839d0, type: 2}
+  - {fileID: 11400000, guid: 2b537206ae9b866428736495049d61d7, type: 2}
+  - {fileID: 11400000, guid: 8c164bce6aed83248bcf8de577b60fa9, type: 2}
+  - {fileID: 11400000, guid: e942c587c5ae26d4eb00b35afb294197, type: 2}
+  - {fileID: 11400000, guid: 729b507e7697fef40892983a74abe16b, type: 2}
+  - {fileID: 11400000, guid: 2a0ecc711bf8de2428dd33d2920991c8, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
   <LocationTime>k__BackingField: 0

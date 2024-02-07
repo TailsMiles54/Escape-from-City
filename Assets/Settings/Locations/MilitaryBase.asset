@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: MilitaryBase
   <LocationType>k__BackingField: 4
+  <SubLocationSettings>k__BackingField:
+  - {fileID: 11400000, guid: 69dbc6bde4708cc4bae09846811d47be, type: 2}
+  - {fileID: 11400000, guid: fa14999c1c236da4d8cbb67b1c658a10, type: 2}
+  - {fileID: 11400000, guid: a495d403dc1085c478e3e17df16be26a, type: 2}
+  - {fileID: 11400000, guid: e1aa723a81708c044a6a3ba1334dda97, type: 2}
+  - {fileID: 11400000, guid: 7e792717982b2e44ebdcfedff11ef54f, type: 2}
+  - {fileID: 11400000, guid: c48b986183137f246897247ba676a201, type: 2}
+  - {fileID: 11400000, guid: dafad47675ffbe6468dcfc10e16185f0, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
   <LocationTime>k__BackingField: 0
