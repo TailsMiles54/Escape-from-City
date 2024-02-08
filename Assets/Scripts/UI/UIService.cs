@@ -17,7 +17,7 @@ public class UIService : MonoBehaviour
     
     public void Start()
     {
-        _player.Inventory.ItemAddedEvent += UpdateMoneyText;
+        //_player.Inventory.ItemAddedEvent += UpdateMoneyText;
     }
 
     public void UpdateMoneyText(Item item)

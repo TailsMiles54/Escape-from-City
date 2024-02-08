@@ -12,7 +12,7 @@ public class NpcNavigationElementBase : NavigationElementBase
         return true; 
     } 
 
-    public override BasePanel CreatePanel(Transform transformParent, Player player, PopupController popupController)
+    public override BasePanel CreatePanel(Transform transformParent)
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<TraderPanel>();
         var panel = Object.Instantiate(prefab, transformParent);

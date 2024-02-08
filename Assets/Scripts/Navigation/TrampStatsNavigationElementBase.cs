@@ -14,7 +14,7 @@ public class TrampStatsNavigationElementBase : NavigationElementBase
         return true; 
     } 
 
-    public override BasePanel CreatePanel(Transform transformParent, Player player, PopupController popupController)
+    public override BasePanel CreatePanel(Transform transformParent)
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<StatsPanel>();
         var panel = Object.Instantiate(prefab, transformParent);

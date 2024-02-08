@@ -5,6 +5,7 @@ using Zenject;
 
 public class ItemsNavigationElementBase : NavigationElementBase
 {
+    [Inject] private Player _player;
     public ItemsNavigationElementBase()
     {
         ThisNavigationElementType = NavigationElementType.Items; 
@@ -15,14 +16,14 @@ public class ItemsNavigationElementBase : NavigationElementBase
         return true; 
     } 
 
-    public override BasePanel CreatePanel(Transform transformParent, Player player, PopupController popupController)
+    public override BasePanel CreatePanel(Transform transformParent)
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<InventoryPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
         panel.Setup(new InventoryPanelSettings()
         {
-            Title = $"Inventory \n Slots: {player.Inventory.Items.Sum(x => SettingsProvider.Get<ItemsList>().GetItem(x.ItemType).ItemSize)}/{player.Inventory.AvailableSlots}",
-            Items = player.Inventory.Items
+            Title = $"Inventory \n Slots: {_player.Inventory.Items.Sum(x => SettingsProvider.Get<ItemsList>().GetItem(x.ItemType).ItemSize)}/{_player.Inventory.AvailableSlots}",
+            Items = _player.Inventory.Items
         });
         return panel;
     }

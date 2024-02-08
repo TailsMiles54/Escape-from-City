@@ -3,39 +3,46 @@ using System.Linq;
 using UnityEngine;
 using Zenject;
 
-public class NavigationController
+public class NavigationController : IInitializable
 {
     [Inject] private Player _player;
     [Inject] private PopupController _popupController;
     
-    private List<NavigationElementBase> NavigationElements = new List<NavigationElementBase>()
+    [Inject] private DiContainer _diContainer;
+    
+    private List<NavigationElementBase> _navigationElements;
+
+    public void Initialize()
     {
-        new AllStatsNavigationElementBase(),
-        new SkillsNavigationElementBase(),
-        new PMCStatsNavigationElementBase(),
-        new TrampStatsNavigationElementBase(),
-        new ItemsNavigationElementBase(),
-        new NpcNavigationElementBase(),
-        new ShelterElementsNavigationElementBase(),
-        new RaidStartNavigationElementBase(),
-        new RaidProcessNavigationElementBase(),
-    };
+        _navigationElements = new List<NavigationElementBase>()
+        {
+            (AllStatsNavigationElementBase)_diContainer.Instantiate(typeof(AllStatsNavigationElementBase)),
+            (SkillsNavigationElementBase)_diContainer.Instantiate(typeof(SkillsNavigationElementBase)),
+            (PMCStatsNavigationElementBase)_diContainer.Instantiate(typeof(PMCStatsNavigationElementBase)),
+            (TrampStatsNavigationElementBase)_diContainer.Instantiate(typeof(TrampStatsNavigationElementBase)),
+            (ItemsNavigationElementBase)_diContainer.Instantiate(typeof(ItemsNavigationElementBase)),
+            (NpcNavigationElementBase)_diContainer.Instantiate(typeof(NpcNavigationElementBase)),
+            (ShelterElementsNavigationElementBase)_diContainer.Instantiate(typeof(ShelterElementsNavigationElementBase)),
+            (RaidStartNavigationElementBase)_diContainer.Instantiate(typeof(RaidStartNavigationElementBase)),
+            (RaidProcessNavigationElementBase)_diContainer.Instantiate(typeof(RaidProcessNavigationElementBase)),
+        };
+    }
     
     public bool IsActive(NavigationElementType navigationElementType)
     {
-        if (NavigationElements.All(x => x.ThisNavigationElementType != navigationElementType))
+        if (_navigationElements.All(x => x.ThisNavigationElementType != navigationElementType))
         {
             Debug.LogWarning($"NavigationController not contain BaseElement for {navigationElementType}");
             return false;
         }
         
-        return NavigationElements
+        return _navigationElements
             .First(x => x.ThisNavigationElementType == navigationElementType).IsActive();
     }
 
     public BasePanel GetPanel(NavigationElementType navigationElementType, Transform transformParent)
     {
-        return NavigationElements
-            .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel(transformParent, _player, _popupController);
+        return _navigationElements
+            .First(x => x.ThisNavigationElementType == navigationElementType).CreatePanel(transformParent);
     }
 }

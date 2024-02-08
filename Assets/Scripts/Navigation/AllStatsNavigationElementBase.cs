@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using Zenject;
 
 public class AllStatsNavigationElementBase : NavigationElementBase
 {
+    [Inject] private Player _player;
+    
     public AllStatsNavigationElementBase()
     {
         ThisNavigationElementType = NavigationElementType.AllStats;
@@ -14,7 +17,7 @@ public class AllStatsNavigationElementBase : NavigationElementBase
         return true;
     }
 
-    public override BasePanel CreatePanel(Transform transformParent, Player player, PopupController popupController)
+    public override BasePanel CreatePanel(Transform transformParent)
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<StatsPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
@@ -23,7 +26,7 @@ public class AllStatsNavigationElementBase : NavigationElementBase
             TitleText = "AllStats",
             StatsElements = new List<(string, string)>
             {
-                ("NickName", player.Name),
+                ("NickName", _player.Name),
                 ("Test3", "Test3"),
             }
         });
