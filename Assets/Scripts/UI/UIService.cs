@@ -81,5 +81,10 @@ public enum NavigationElementType
     NPC = 106,
     ShelterElements = 107,
     RaidStart = 108,
-    RaidProcess = 109
+    RaidProcess = 109,
+    
+    RaidMap = 201,
+    RaidTimer = 202,
+    RaidActions = 203,
+    RaidStats = 304,
 }
