@@ -6,6 +6,7 @@ using Zenject;
 public class ItemsNavigationElementBase : NavigationElementBase
 {
     [Inject] private Player _player;
+    [Inject] private GameManager _gameManager;
     public ItemsNavigationElementBase()
     {
         ThisNavigationElementType = NavigationElementType.Items; 

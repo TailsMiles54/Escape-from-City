@@ -6,6 +6,7 @@ using Zenject;
 public class AllStatsNavigationElementBase : NavigationElementBase
 {
     [Inject] private Player _player;
+    [Inject] private GameManager _gameManager;
     
     public AllStatsNavigationElementBase()
     {

@@ -3423,10 +3423,10 @@ MonoBehaviour:
     EquipmentPanel: {fileID: 2616416796572715267}
   - ItemCategoryType: 5
     EquipmentPanel: {fileID: 1982792858281226888}
-  _timePanels:
-  - {fileID: 5591951827847669153}
-  - {fileID: 8566176438476257620}
+  _dayTimePanels: {fileID: 5591951827847669153}
+  _nightTimePanels: {fileID: 8566176438476257620}
   _locationsParent: {fileID: 2608827395759915728}
+  _startRaidButton: {fileID: 6843676992632462502}
 --- !u!114 &4315070253825721349
 MonoBehaviour:
   m_ObjectHideFlags: 0

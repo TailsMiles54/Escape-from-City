@@ -6,6 +6,7 @@ public class RaidStartNavigationElementBase : NavigationElementBase
 {
     [Inject] private Player _player;
     [Inject] private PopupController _popupController;
+    [Inject] private RaidManager _raidManager;
     
     public RaidStartNavigationElementBase() 
     {
@@ -24,7 +25,8 @@ public class RaidStartNavigationElementBase : NavigationElementBase
         panel.Setup(new StartRaidPanelSettings()
         {
             Player = _player,
-            PopupController = _popupController
+            PopupController = _popupController,
+            RaidManager = _raidManager
         });
         return panel;
     }

@@ -1,7 +1,10 @@
 using UnityEngine;
+using Zenject;
 
 public class NpcNavigationElementBase : NavigationElementBase 
 {
+    [Inject] private GameManager _gameManager;
+    
     public NpcNavigationElementBase() 
     {
         ThisNavigationElementType = NavigationElementType.NPC; 

@@ -9,21 +9,33 @@ public class UIService : MonoBehaviour
 {
     [SerializeField] private Transform _contentViewTransform;
     [SerializeField] private TMP_Text _moneyTMP;
+    [SerializeField] private List<NavigationElement> _bottomNavElements;
     
     [Inject] private Player _player;
     [Inject] private NavigationController _navigationController;
 
     private List<BasePanel> _panels = new List<BasePanel>();
     
-    public void Start()
-    {
-        //_player.Inventory.ItemAddedEvent += UpdateMoneyText;
-    }
-
     public void UpdateMoneyText(Item item)
     {
         if(item.ItemType == ItemType.Roubles)
             _moneyTMP.text = $"Money {_player.GetMoney()}";   
+    }
+
+    public void UpdateButtonsState(GameManager.GameState gameState)
+    {
+        foreach (var navigationElement in _bottomNavElements)
+        {
+            switch (navigationElement.NavigationElementType)
+            {
+                case NavigationElementType.Profile:
+                case NavigationElementType.Inventory:
+                case NavigationElementType.Traders:
+                case NavigationElementType.Shelter:
+                    navigationElement.Activate(gameState != GameManager.GameState.Lobby);
+                    break;
+            }
+        }
     }
     
     public void TabTransition(NavigationElementType navigationElementType)

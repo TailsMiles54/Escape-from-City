@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Settings;
-using TMPro;
 using UnityEngine;
-using Zenject;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -13,8 +12,14 @@ namespace UI
         [SerializeField] private CharacterPanel _characterPanel;
         [SerializeField] private CharacterPanel _trampPanel;
         [SerializeField] private List<EquipmentPanelSetting> _equipmentPanels;
-        [SerializeField] private List<TimePanel> _timePanels;
+        [SerializeField] private TimePanel _dayTimePanels;
+        [SerializeField] private TimePanel _nightTimePanels;
         [SerializeField] private Transform _locationsParent;
+        [SerializeField] private Button _startRaidButton;
+
+        private LocationType _selectedLocationType;
+        private RaidTime _selectedDateTime;
+        private CharacterType _selectedCharacterType;
         
         private List<LocationPanel> _locationPanels = new List<LocationPanel>();
         
@@ -22,6 +27,20 @@ namespace UI
         {
             SetupCharactersPanel(settings);
 
+            EquipmentPanelsSetup(settings);
+
+            TimePanelsSetup();
+
+            LocationPanelsSetup();
+            
+            _startRaidButton.onClick.AddListener((() =>
+            {
+                settings.RaidManager.StartRaid(_selectedLocationType, _selectedCharacterType, _selectedDateTime);
+            }));
+        }
+
+        private void EquipmentPanelsSetup(StartRaidPanelSettings settings)
+        {
             foreach (var equipmentPanelSetting in _equipmentPanels)
             {
                 equipmentPanelSetting.EquipmentPanel.Setup(equipmentPanelSetting.ItemCategoryType.ToString(),
@@ -31,17 +50,10 @@ namespace UI
                         settings.PopupController.ShowPopup(new SelectItemPopupSetting());
                     });
             }
+        }
 
-            foreach (var timePanel in _timePanels)
-            {
-                timePanel.Setup((() =>
-                {
-                    _timePanels.ForEach(x => x.Activate(x == timePanel));
-                }));
-            }
-            
-            _timePanels.First().Activate(true);
-
+        private void LocationPanelsSetup()
+        {
             var locationSettings = SettingsProvider.Get<LocationsList>();
             foreach (var locationSetting in locationSettings.Locations)
             {
@@ -49,6 +61,7 @@ namespace UI
                 var newLocation = Instantiate(locationPanelPrefab, _locationsParent);
                 newLocation.Setup(locationSetting.Name, locationSetting.Sprite, () =>
                 {
+                    _selectedLocationType = locationSetting.LocationType; 
                     foreach (var locationPanel in _locationPanels)
                     {
                         locationPanel.Activate(locationPanel == newLocation);
@@ -58,6 +71,23 @@ namespace UI
 
                 newLocation.Activate(_locationPanels.First() == newLocation);
             }
+        }
+
+        private void TimePanelsSetup()
+        {
+            _dayTimePanels.Setup((() =>
+            {
+                _selectedDateTime = RaidTime.Day;
+                _dayTimePanels.Activate(true);
+                _nightTimePanels.Activate(false);
+            }));
+            _nightTimePanels.Setup((() =>
+            {
+                _selectedDateTime = RaidTime.Night;
+                _dayTimePanels.Activate(false);
+                _nightTimePanels.Activate(true);
+            }));
+            _dayTimePanels.Activate(true);
         }
 
         private void EnableEquipment(bool state)
@@ -72,6 +102,7 @@ namespace UI
         {
             _characterPanel.Setup(settings.Player.Name, SettingsProvider.Get<PrefabSettings>().PMCImage, () =>
             {
+                _selectedCharacterType = CharacterType.Character;
                 _characterPanel.Activate(true);
                 _trampPanel.Activate(false);
                 EnableEquipment(true);
@@ -81,6 +112,7 @@ namespace UI
 
             _trampPanel.Setup("OLEG EBLAN", SettingsProvider.Get<PrefabSettings>().TrampImage, () =>
             {
+                _selectedCharacterType = CharacterType.Tramp;
                 _characterPanel.Activate(false);
                 _trampPanel.Activate(true);
                 EnableEquipment(false);
@@ -100,5 +132,6 @@ namespace UI
     {
         public Player Player;
         public PopupController PopupController;
+        public RaidManager RaidManager;
     }
 }
