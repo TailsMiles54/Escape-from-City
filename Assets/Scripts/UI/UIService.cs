@@ -64,7 +64,6 @@ public class UIService : MonoBehaviour
     }
 }
 
-[Serializable]
 public enum NavigationElementType
 {
     Profile = 0,
