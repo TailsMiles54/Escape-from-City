@@ -21,6 +21,7 @@ public class RaidManager
         CurrentSubLocation = LocationSettings.GetRandomSubLocation().ThisSubLocationType;
         _gameManager.ChangeGameState(GameManager.GameState.Raid);
         _uiService.UpdateButtonsState(GameManager.GameState.Raid);
+        _uiService.TabUpdate();
     }
     
     public void EndRaid()

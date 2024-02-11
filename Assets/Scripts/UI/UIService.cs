@@ -15,6 +15,7 @@ public class UIService : MonoBehaviour
     [Inject] private NavigationController _navigationController;
 
     private List<BasePanel> _panels = new List<BasePanel>();
+    private NavigationElementType _navigationElementType;
     
     public void UpdateMoneyText(Item item)
     {
@@ -40,6 +41,12 @@ public class UIService : MonoBehaviour
     
     public void TabTransition(NavigationElementType navigationElementType)
     {
+        _navigationElementType = navigationElementType;
+        TabUpdate();
+    }
+
+    public void TabUpdate()
+    {
         for (int i = _panels.Count-1; _panels.Count > 0 && i >= 0 ; i--)
         {
             var child = _panels[i];
@@ -48,7 +55,7 @@ public class UIService : MonoBehaviour
         
         _panels.Clear();
         
-        var childElements = SettingsProvider.Get<NavigationElementSettingsList>().GetChildElements(navigationElementType);
+        var childElements = SettingsProvider.Get<NavigationElementSettingsList>().GetChildElements(_navigationElementType);
 
         foreach (var childElement in childElements)
         {
