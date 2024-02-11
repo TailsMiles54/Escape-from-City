@@ -1,3 +1,4 @@
+using Settings;
 using UI;
 using UnityEngine;
 using Zenject;
@@ -19,10 +20,12 @@ public class RaidActionsNavigationElementBase : NavigationElementBase
 
     public override BasePanel CreatePanel(Transform transformParent)
     {
+        var actionsSettings = SettingsProvider.Get<LocationsList>().GetLocation(_raidManager.CurrentLocation).GetSubLocationSetting(_raidManager.CurrentSubLocation).ActionSettings;
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<RaidActionsPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
         panel.Setup(new RaidActionsPanelSettings()
         {
+            ActionSettings = actionsSettings
         });
         return panel;
     }

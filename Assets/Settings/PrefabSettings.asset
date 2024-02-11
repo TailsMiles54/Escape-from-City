@@ -29,5 +29,4 @@ MonoBehaviour:
   <PMCImage>k__BackingField: {fileID: 21300000, guid: c2ea4805bc6b5ae4c974b98543294567, type: 3}
   <TrampImage>k__BackingField: {fileID: 21300000, guid: a12a2e83e6ad7f147a616e2c57ee057a, type: 3}
   <LocationPanelPrefab>k__BackingField: {fileID: 1019373004922973952, guid: 5d61cce60b277d94b8e1c5184bbc25ab, type: 3}
-  <ItemPanelPrefab>k__BackingField: {fileID: 0}
-  <TitlePanelPrefab>k__BackingField: {fileID: 0}
+  <ActionItem>k__BackingField: {fileID: 8022494021123441306, guid: 5b4e1554df646e74ab11a208fd75ec6e, type: 3}

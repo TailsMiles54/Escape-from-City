@@ -14,8 +14,7 @@ public class PrefabSettings : ScriptableObject
     [field: SerializeField] public Sprite PMCImage { get; private set; }
     [field: SerializeField] public Sprite TrampImage { get; private set; }
     [field: SerializeField] public LocationPanel LocationPanelPrefab { get; private set; }
-    [field: SerializeField] public ItemPanel ItemPanelPrefab { get; private set; }
-    [field: SerializeField] public TitlePanel TitlePanelPrefab { get; private set; }
+    [field: SerializeField] public ActionItem ActionItem { get; private set; }
 
     public T GetPanel<T>() where T : BasePanel
     {

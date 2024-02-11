@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "EscapeFromCity/Locations/LocationSettings", fileName = "LocationSettings", order = 0)]
@@ -20,5 +21,10 @@ public class LocationSettings : ScriptableObject
     public SubLocationSettings GetRandomSubLocation()
     {
         return SubLocationSettings.GetRandomElement();
+    }
+
+    public SubLocationSettings GetSubLocationSetting(SubLocationType raidManagerCurrentSubLocation)
+    {
+        return SubLocationSettings.First(x => x.ThisSubLocationType == raidManagerCurrentSubLocation);
     }
 }
