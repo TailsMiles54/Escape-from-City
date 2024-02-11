@@ -23,6 +23,7 @@ public class RaidTimerNavigationElementBase : NavigationElementBase
         var panel = Object.Instantiate(prefab, transformParent);
         panel.Setup(new RaidTimerPanelSettings()
         {
+            RaidManager = _raidManager
         });
         return panel;
     }

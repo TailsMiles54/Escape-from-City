@@ -24,4 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 926e915ac6eede04b9a0100b2a36e046, type: 2}
   - {fileID: 11400000, guid: d23f35556fe5b8d45b1856324c8c406c, type: 2}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 181f133b5376365428eb59b620a158f8, type: 3}
-  <LocationTime>k__BackingField: 0
+  <LocationTime>k__BackingField: 1500
