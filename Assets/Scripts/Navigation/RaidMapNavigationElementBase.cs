@@ -1,3 +1,4 @@
+using Settings;
 using UI;
 using UnityEngine;
 using Zenject;
@@ -21,8 +22,12 @@ public class RaidMapNavigationElementBase : NavigationElementBase
     {
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<RaidMapPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
+
+        var locationMap = SettingsProvider.Get<LocationsList>().GetLocation(_raidManager.CurrentLocation).LocationMap;
+        
         panel.Setup(new RaidMapPanelSettings()
         {
+            MapItem = locationMap
         });
         return panel;
     }
