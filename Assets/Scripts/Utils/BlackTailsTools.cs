@@ -77,26 +77,28 @@ public class BlackTailsTools : MonoBehaviour
     [MenuItem("BlackTailsTools/Создать настройки сублокаций")]
     static void CreateSubLocations()
     {
-        var locationTypes = Enum.GetValues(typeof(LocationType)).Cast<LocationType>().ToList();
-
-        List<SubLocationType> usedSubLocationTypes = new List<SubLocationType>();
-        foreach (var locationType in locationTypes)
-        {
-            var locationSettings = SettingsProvider.Get<LocationsList>().GetLocation(locationType);
-            usedSubLocationTypes.AddRange(locationSettings.SubLocationSettings.Select(x => x.ThisSubLocationType));
-        }
+        //todo: нужно переписать пусть создания сублокаций
         
-        var subLocationTypes = Enum.GetValues(typeof(SubLocationType)).Cast<SubLocationType>().ToList();
-        var newLocations = subLocationTypes.Except(usedSubLocationTypes).ToList();
-        
-        foreach (var newLocation in newLocations)
-        {
-            var locationSettings = ScriptableObject.CreateInstance<SubLocationSettings>();
-                
-            locationSettings.Init(newLocation);
-            AssetDatabase.CreateAsset(locationSettings, $"Assets/Settings/SubLocations/{newLocation.ToString()}.asset");
-
-            Debug.Log($"{newLocation.ToString()}.asset created");
-        }
+        // var locationTypes = Enum.GetValues(typeof(LocationType)).Cast<LocationType>().ToList();
+        //
+        // List<SubLocationType> usedSubLocationTypes = new List<SubLocationType>();
+        // foreach (var locationType in locationTypes)
+        // {
+        //     var locationSettings = SettingsProvider.Get<LocationsList>().GetLocation(locationType);
+        //     usedSubLocationTypes.AddRange(locationSettings.SubLocationSettings.Select(x => x.ThisSubLocationType));
+        // }
+        //
+        // var subLocationTypes = Enum.GetValues(typeof(SubLocationType)).Cast<SubLocationType>().ToList();
+        // var newLocations = subLocationTypes.Except(usedSubLocationTypes).ToList();
+        //
+        // foreach (var newLocation in newLocations)
+        // {
+        //     var locationSettings = ScriptableObject.CreateInstance<SubLocationSettings>();
+        //         
+        //     locationSettings.Init(newLocation);
+        //     AssetDatabase.CreateAsset(locationSettings, $"Assets/Settings/SubLocations/{newLocation.ToString()}.asset");
+        //
+        //     Debug.Log($"{newLocation.ToString()}.asset created");
+        // }
     }
 }

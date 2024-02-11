@@ -10,8 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe8d6ca8259640b884bf6e386e57feec, type: 3}
-  m_Name: PortMuseum
+  m_Name: IndustrialFactory
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: PortMuseum
-  <ThisSubLocationType>k__BackingField: 5
+  <Name>k__BackingField: IndustrialFactory
+  <ThisSubLocationType>k__BackingField: 301
   <TransitionLocations>k__BackingField: 
+  <ActionSettings>k__BackingField:
+  - ActionType: 0
+    Seconds: 300
+  - ActionType: 1
+    Seconds: 300
+  - ActionType: 2
+    Seconds: 300
+  - ActionType: 3
+    Seconds: 600
+  - ActionType: 4
+    Seconds: 300
+  - ActionType: 5
+    Seconds: 600
+  <ExitPoint>k__BackingField: 0
