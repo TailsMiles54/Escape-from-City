@@ -15,6 +15,7 @@ public class PrefabSettings : ScriptableObject
     [field: SerializeField] public Sprite TrampImage { get; private set; }
     [field: SerializeField] public LocationPanel LocationPanelPrefab { get; private set; }
     [field: SerializeField] public ActionItem ActionItem { get; private set; }
+    [field: SerializeField] public ShelterItem ShelterItem { get; private set; }
 
     public T GetPanel<T>() where T : BasePanel
     {

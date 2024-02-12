@@ -42,7 +42,7 @@ public class RaidManager
     {
         RaidTimeSeconds = newSeconds;
         RaidTimeChanged?.Invoke(RaidTimeSeconds);
-        if (RaidTimeSeconds <= 0)
+        if (RaidTimeSeconds < 0)
         {
             //raid end
         }

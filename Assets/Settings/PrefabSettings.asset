@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: -7128808350380863341, guid: 104956fd54ed5404eab0f0d8a54a738d, type: 3}
   - {fileID: -7158324802062586159, guid: 38fad9899191b1343a30600a2f687951, type: 3}
   - {fileID: 7627723349688769387, guid: c914c1126ae52bc47b1bb867956708c3, type: 3}
+  - {fileID: -4722668991094114700, guid: 6142db7aab786d04f851522cd69e1999, type: 3}
   _popups:
   - {fileID: 2220476556624544061, guid: 277122d868a73f641b452113687ace3f, type: 3}
   <InventoryElement>k__BackingField: {fileID: 398986529343319107, guid: 2c5437b8291d6f74b8f2bd15cbb80ca1, type: 3}
@@ -30,3 +31,4 @@ MonoBehaviour:
   <TrampImage>k__BackingField: {fileID: 21300000, guid: a12a2e83e6ad7f147a616e2c57ee057a, type: 3}
   <LocationPanelPrefab>k__BackingField: {fileID: 1019373004922973952, guid: 5d61cce60b277d94b8e1c5184bbc25ab, type: 3}
   <ActionItem>k__BackingField: {fileID: 8022494021123441306, guid: 5b4e1554df646e74ab11a208fd75ec6e, type: 3}
+  <ShelterItem>k__BackingField: {fileID: -916458421400975260, guid: 841738d182cb38b42bb4f838396dcfec, type: 3}
