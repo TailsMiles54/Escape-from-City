@@ -1,4 +1,4 @@
-public enum ShelterUpgrade
+public enum ShelterUpgradeType
 {
     MiningFarm = 0,
     Storage = 1,

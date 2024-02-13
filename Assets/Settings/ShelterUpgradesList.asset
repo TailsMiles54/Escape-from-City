@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d435212b9748ba8f3d4372ef63c6f5, type: 3}
+  m_Name: ShelterUpgradesList
+  m_EditorClassIdentifier: 
+  <Upgrades>k__BackingField:
+  - {fileID: 11400000, guid: 49fe9b25a876eab4bae112c70dcfe984, type: 2}
+  - {fileID: 11400000, guid: a318c6ce946c7c54eac4f5a22089031a, type: 2}
+  - {fileID: 11400000, guid: 7865ffb8172ff084081c0361930eacf9, type: 2}

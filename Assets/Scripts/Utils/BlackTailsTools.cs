@@ -74,6 +74,27 @@ public class BlackTailsTools : MonoBehaviour
         }
     }
     
+    [MenuItem("BlackTailsTools/Создать настройки улучшений убежища")]
+    static void CreateShelterUpgrades()
+    {
+        var shelterUpgradesList = SettingsProvider.Get<ShelterUpgradesList>();
+        var upgradeSettings = shelterUpgradesList.Upgrades;
+        var addedUpgrades = upgradeSettings.Select(x => x.UpgradeType);
+        var shelterUpgradeTypes = Enum.GetValues(typeof(ShelterUpgradeType)).Cast<ShelterUpgradeType>().ToList();
+        var newUpgrades = shelterUpgradeTypes.Except(addedUpgrades).ToList();
+        
+        foreach (var newUpgrade in newUpgrades)
+        {
+            var shelterUpgradeSetting = ScriptableObject.CreateInstance<ShelterUpgradeSetting>();
+                
+            shelterUpgradeSetting.Init(newUpgrade);
+            AssetDatabase.CreateAsset(shelterUpgradeSetting, $"Assets/Settings/ShelterUpgrades/{newUpgrade.ToString()}.asset");
+            shelterUpgradesList.AddItem(shelterUpgradeSetting);
+
+            Debug.Log($"{newUpgrade.ToString()}.asset created");
+        }
+    }
+    
     [MenuItem("BlackTailsTools/Создать настройки сублокаций")]
     static void CreateSubLocations()
     {

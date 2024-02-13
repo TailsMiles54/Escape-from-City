@@ -10,10 +10,27 @@ public class ShelterItem : MonoBehaviour
     [SerializeField] private TMP_Text _buttonText;
     [SerializeField] private Button _button;
     
-    public void Setup(ShelterManager settingsShelterManager, ShelterUpgrade shelterUpgrade)
+    public void Setup(ShelterUpgradeType shelterUpgradeType, int level, ShelterManager shelterManager)
     {
-        _infoText.SetText(shelterUpgrade.ToString());
-        _progressText.SetText($"{shelterUpgrade.ToString()} 0/5");
-        _buttonText.SetText("Upgrade");
+        var upgradeSetting = SettingsProvider.Get<ShelterUpgradesList>().GetSetting(shelterUpgradeType);
+        var maxLevel = upgradeSetting.MaxLevel;
+        _infoText.SetText(shelterUpgradeType.ToString());
+        _progressText.SetText($"Level: {level}/{maxLevel}");
+
+        if (level >= maxLevel)
+        {
+            _buttonText.SetText("Max Level");
+            _button.interactable = false;
+        }
+        else
+        {
+            _buttonText.SetText("Upgrade");
+            _button.onClick.AddListener(() => {shelterManager.UpgradeShelter(shelterUpgradeType);});
+        }
+    }
+
+    public void OnDestroy()
+    {
+        _button.onClick.RemoveAllListeners();
     }
 }

@@ -10,11 +10,11 @@ namespace UI
         public override void Setup(ShelterPanelSettings settings)
         {
             var actionItemPrefab = SettingsProvider.Get<PrefabSettings>().ShelterItem;
-            var upgrades = Enum.GetValues(typeof(ShelterUpgrade)).Cast<ShelterUpgrade>().ToList();
+            var upgrades = settings.ShelterManager.ShelterUpgrades;
             foreach (var shelterUpgrade in upgrades)
             {
                 var shelterItem = Instantiate(actionItemPrefab, _actionsParent);
-                shelterItem.Setup(settings.ShelterManager, shelterUpgrade);
+                shelterItem.Setup(shelterUpgrade.Key, shelterUpgrade.Value, settings.ShelterManager);
             }
         }
     }
