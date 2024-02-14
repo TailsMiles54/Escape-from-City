@@ -25,6 +25,11 @@ public class NavigationController : IInitializable
             (ShelterElementsNavigationElementBase)_diContainer.Instantiate(typeof(ShelterElementsNavigationElementBase)),
             (RaidStartNavigationElementBase)_diContainer.Instantiate(typeof(RaidStartNavigationElementBase)),
             (RaidProcessNavigationElementBase)_diContainer.Instantiate(typeof(RaidProcessNavigationElementBase)),
+            
+            (RaidMapNavigationElementBase)_diContainer.Instantiate(typeof(RaidMapNavigationElementBase)),
+            (RaidActionsNavigationElementBase)_diContainer.Instantiate(typeof(RaidActionsNavigationElementBase)),
+            //(RaidStatsNavigationElementBase)_diContainer.Instantiate(typeof(RaidStatsNavigationElementBase)),
+            (RaidTimerNavigationElementBase)_diContainer.Instantiate(typeof(RaidTimerNavigationElementBase)),
         };
     }
     

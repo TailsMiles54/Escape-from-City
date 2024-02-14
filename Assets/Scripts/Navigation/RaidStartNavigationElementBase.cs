@@ -7,6 +7,7 @@ public class RaidStartNavigationElementBase : NavigationElementBase
     [Inject] private Player _player;
     [Inject] private PopupController _popupController;
     [Inject] private RaidManager _raidManager;
+    [Inject] private GameManager _gameManager;
     
     public RaidStartNavigationElementBase() 
     {
@@ -15,7 +16,7 @@ public class RaidStartNavigationElementBase : NavigationElementBase
     
     public override bool IsActive() 
     { 
-        return true; 
+        return _gameManager.CurrentGameState == GameManager.GameState.Lobby; 
     } 
 
     public override BasePanel CreatePanel(Transform transformParent)

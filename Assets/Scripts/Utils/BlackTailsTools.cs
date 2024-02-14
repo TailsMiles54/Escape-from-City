@@ -95,29 +95,52 @@ public class BlackTailsTools : MonoBehaviour
         }
     }
     
+    [MenuItem("BlackTailsTools/Создать настройки улучшений убежища")]
+    static void CreateShelterUpgrades()
+    {
+        var shelterUpgradesList = SettingsProvider.Get<ShelterUpgradesList>();
+        var upgradeSettings = shelterUpgradesList.Upgrades;
+        var addedUpgrades = upgradeSettings.Select(x => x.UpgradeType);
+        var shelterUpgradeTypes = Enum.GetValues(typeof(ShelterUpgradeType)).Cast<ShelterUpgradeType>().ToList();
+        var newUpgrades = shelterUpgradeTypes.Except(addedUpgrades).ToList();
+        
+        foreach (var newUpgrade in newUpgrades)
+        {
+            var shelterUpgradeSetting = ScriptableObject.CreateInstance<ShelterUpgradeSetting>();
+                
+            shelterUpgradeSetting.Init(newUpgrade);
+            AssetDatabase.CreateAsset(shelterUpgradeSetting, $"Assets/Settings/ShelterUpgrades/{newUpgrade.ToString()}.asset");
+            shelterUpgradesList.AddItem(shelterUpgradeSetting);
+
+            Debug.Log($"{newUpgrade.ToString()}.asset created");
+        }
+    }
+    
     [MenuItem("BlackTailsTools/Создать настройки сублокаций")]
     static void CreateSubLocations()
     {
-        var locationTypes = Enum.GetValues(typeof(LocationType)).Cast<LocationType>().ToList();
-
-        List<SubLocationType> usedSubLocationTypes = new List<SubLocationType>();
-        foreach (var locationType in locationTypes)
-        {
-            var locationSettings = SettingsProvider.Get<LocationsList>().GetLocation(locationType);
-            usedSubLocationTypes.AddRange(locationSettings.SubLocationSettings.Select(x => x.ThisSubLocationType));
-        }
+        //todo: нужно переписать пусть создания сублокаций
         
-        var subLocationTypes = Enum.GetValues(typeof(SubLocationType)).Cast<SubLocationType>().ToList();
-        var newLocations = subLocationTypes.Except(usedSubLocationTypes).ToList();
-        
-        foreach (var newLocation in newLocations)
-        {
-            var locationSettings = ScriptableObject.CreateInstance<SubLocationSettings>();
-                
-            locationSettings.Init(newLocation);
-            AssetDatabase.CreateAsset(locationSettings, $"Assets/Settings/SubLocations/{newLocation.ToString()}.asset");
-
-            Debug.Log($"{newLocation.ToString()}.asset created");
-        }
+        // var locationTypes = Enum.GetValues(typeof(LocationType)).Cast<LocationType>().ToList();
+        //
+        // List<SubLocationType> usedSubLocationTypes = new List<SubLocationType>();
+        // foreach (var locationType in locationTypes)
+        // {
+        //     var locationSettings = SettingsProvider.Get<LocationsList>().GetLocation(locationType);
+        //     usedSubLocationTypes.AddRange(locationSettings.SubLocationSettings.Select(x => x.ThisSubLocationType));
+        // }
+        //
+        // var subLocationTypes = Enum.GetValues(typeof(SubLocationType)).Cast<SubLocationType>().ToList();
+        // var newLocations = subLocationTypes.Except(usedSubLocationTypes).ToList();
+        //
+        // foreach (var newLocation in newLocations)
+        // {
+        //     var locationSettings = ScriptableObject.CreateInstance<SubLocationSettings>();
+        //         
+        //     locationSettings.Init(newLocation);
+        //     AssetDatabase.CreateAsset(locationSettings, $"Assets/Settings/SubLocations/{newLocation.ToString()}.asset");
+        //
+        //     Debug.Log($"{newLocation.ToString()}.asset created");
+        // }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -6,6 +7,7 @@ using Zenject;
 public class SaveManager
 {
     [Inject] private Player _player;
+    [Inject] private ShelterManager _shelterManager;
     
     public void SavePlayerData()
     {
@@ -44,5 +46,25 @@ public class SaveManager
         string path = Path.Combine(Application.persistentDataPath, fileName);
         string json = JsonConvert.SerializeObject(data);
         File.WriteAllText(path, json);
+    }
+
+    public void SaveShelterData(Dictionary<ShelterUpgradeType, int> shelterUpgrades)
+    {
+        SaveData(shelterUpgrades, "ShelterData.json");
+    }
+
+    public void LoadShelterData(out Dictionary<ShelterUpgradeType, int> shelterUpgrades)
+    {
+        string path = Path.Combine(Application.persistentDataPath, "ShelterData.json");
+
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            shelterUpgrades = JsonConvert.DeserializeObject<Dictionary<ShelterUpgradeType, int>>(json);
+        }
+        else
+        {
+            shelterUpgrades = new Dictionary<ShelterUpgradeType, int>();
+        }
     }
 }
