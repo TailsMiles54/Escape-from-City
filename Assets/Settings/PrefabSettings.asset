@@ -17,8 +17,8 @@ MonoBehaviour:
   - {fileID: 4422064100868359087, guid: 1f67de0fa7c56824fa1bf2dc33f8ca74, type: 3}
   - {fileID: 6716845429948516732, guid: dec7f7d0b6de79246a6a39076bc9470c, type: 3}
   - {fileID: 9006568843239007565, guid: 5254fc555721ff94a8e7d228a862279e, type: 3}
-  - {fileID: 1743238195231162099, guid: 77e59463e3bbd4b4eae065d9f1fd77b3, type: 3}
   - {fileID: 4345356301578096358, guid: eaea5697a86a71141975f787f11764a5, type: 3}
+  - {fileID: 7369116731254709031, guid: 77e59463e3bbd4b4eae065d9f1fd77b3, type: 3}
   _popups:
   - {fileID: 2220476556624544061, guid: 277122d868a73f641b452113687ace3f, type: 3}
   <InventoryElement>k__BackingField: {fileID: 398986529343319107, guid: 2c5437b8291d6f74b8f2bd15cbb80ca1, type: 3}
@@ -26,3 +26,6 @@ MonoBehaviour:
   <PMCImage>k__BackingField: {fileID: 21300000, guid: c2ea4805bc6b5ae4c974b98543294567, type: 3}
   <TrampImage>k__BackingField: {fileID: 21300000, guid: a12a2e83e6ad7f147a616e2c57ee057a, type: 3}
   <LocationPanelPrefab>k__BackingField: {fileID: 1019373004922973952, guid: 5d61cce60b277d94b8e1c5184bbc25ab, type: 3}
+  <ItemPanelPrefab>k__BackingField: {fileID: 0}
+  <TitlePanelPrefab>k__BackingField: {fileID: 0}
+  <ItemNpcPrefab>k__BackingField: {fileID: 7727524852234251093, guid: 06c5eaac9bc8841468a400b21ca0af37, type: 3}

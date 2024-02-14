@@ -31,6 +31,27 @@ public class BlackTailsTools : MonoBehaviour
         }
     }
     
+    [MenuItem("BlackTailsTools/Создать настройки NPC")]
+    static void CreateNpc()
+    {
+        var npcSettingsList = SettingsProvider.Get<NpcSettingsList>();
+        var npcSettings = npcSettingsList.NpcSettings;
+        var addedNpc = npcSettings.Select(x => x.NpcType);
+        var npcTypes = Enum.GetValues(typeof(NpcType)).Cast<NpcType>().ToList();
+        var newNpc = npcTypes.Except(addedNpc).ToList();
+        
+        foreach (var npcType in newNpc)
+        {
+            var npcSetting = ScriptableObject.CreateInstance<NpcSetting>();
+                
+            npcSetting.Init(npcType);
+            AssetDatabase.CreateAsset(npcSetting, $"Assets/Settings/NPC/{npcType.ToString()}.asset");
+            npcSettingsList.AddItem(npcSetting);
+
+            Debug.Log($"{npcType.ToString()}.asset created");
+        }
+    }
+    
     [MenuItem("BlackTailsTools/Очистка сейвов")]
     static void DeleteSaveFiles()
     {

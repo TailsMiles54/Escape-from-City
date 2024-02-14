@@ -17,19 +17,10 @@ public class NpcNavigationElementBase : NavigationElementBase
 
     public override BasePanel CreatePanel(Transform transformParent)
     {
-        var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<TraderPanel>();
+        var traders = SettingsProvider.Get<NpcSettingsList>();
+        var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<NpcPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
-        panel.Setup(new TraderPanelSettings
-        {
-            Text = "Имя",
-            Image = null,
-            Second1Text = "Test1",
-            Second2Text = "Test2",
-            Second3Text = "Test3",
-            Button1Text = "Test4",
-            Button2Text = "Test5",
-            Button3Text = "Test6",
-        });
+        panel.Setup(new NpcPanelSettings());
         return panel;
     }
 }
