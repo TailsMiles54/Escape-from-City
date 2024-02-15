@@ -9,6 +9,7 @@ public class NpcSetting : ScriptableObject
     [field: SerializeField] public float Price { get; private set;}
     [field: SerializeField] public NpcType NpcType { get; private set;}
     [field: SerializeField] public List<ItemCategoryType> ItemCategory { get; private set;}
+    [field: SerializeField] public List<Item> ItemSell { get; private set;}
     [field: SerializeField] public Sprite Sprite { get; private set;}
 
     public void Init(NpcType npcType)
