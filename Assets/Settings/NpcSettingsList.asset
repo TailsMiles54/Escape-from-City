@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcd1c31b1644297b045d2502d5f9d4b, type: 3}
   m_Name: NpcSettingsList
   m_EditorClassIdentifier: 
-  <NpcSettings>k__BackingField: []
+  <NpcSettings>k__BackingField:
+  - {fileID: 11400000, guid: 2a0e80c3fe8cbd146bf204995ee1a1ce, type: 2}
+  - {fileID: 11400000, guid: 171d54040c2684348ad19c63d8915dcf, type: 2}
