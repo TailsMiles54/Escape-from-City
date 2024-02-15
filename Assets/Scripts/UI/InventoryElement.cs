@@ -1,3 +1,4 @@
+using System;
 using Settings;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class InventoryElement : MonoBehaviour
     [SerializeField] private TMP_Text _itemName;
 
     private Item _item;
-    public void Setup(Item item)
+    public void Setup(Item item, Action action)
     {
         var itemSetting = SettingsProvider.Get<ItemsList>().GetItem(item.ItemType);
         _item = item;
@@ -17,5 +18,7 @@ public class InventoryElement : MonoBehaviour
         
         if(itemSetting.Sprite != null)
             _image.sprite = itemSetting.Sprite;
+        
+        
     }
 }
