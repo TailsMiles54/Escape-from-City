@@ -11,7 +11,12 @@ public class NpcPanel : Panel<NpcPanelSettings>
         foreach (var npcSetting in npcSettings)
         {
             var npc = Instantiate(npcItemPrefab, _npcParent);
-            npc.Setup(npcSetting);
+            npc.Setup(npcSetting, settings.Player);
         }
     }
+}
+
+public class NpcPanelSettings : BasePanelSettings
+{
+    public Player Player;
 }

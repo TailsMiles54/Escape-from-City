@@ -7,6 +7,7 @@ public class ItemSettings : ScriptableObject
     [field: SerializeField] public string DefaultPrice { get; private set;}
     [field: SerializeField] public Rarity Rarity { get; private set;}
     [field: SerializeField] public ItemType ItemType { get; private set;}
+    [field: SerializeField] public ItemCategoryType ItemCategoryType { get; private set;}
     [field: SerializeField] public Sprite Sprite { get; private set;}
     [field: SerializeField] public int ItemSize { get; private set;}
     [field: SerializeField] public int MaxInStack { get; private set;}

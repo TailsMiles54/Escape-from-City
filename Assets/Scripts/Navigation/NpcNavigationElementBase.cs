@@ -4,6 +4,7 @@ using Zenject;
 public class NpcNavigationElementBase : NavigationElementBase 
 {
     [Inject] private GameManager _gameManager;
+    [Inject] private Player _player;
     
     public NpcNavigationElementBase() 
     {
@@ -17,10 +18,12 @@ public class NpcNavigationElementBase : NavigationElementBase
 
     public override BasePanel CreatePanel(Transform transformParent)
     {
-        var traders = SettingsProvider.Get<NpcSettingsList>();
         var prefab = SettingsProvider.Get<PrefabSettings>().GetPanel<NpcPanel>();
         var panel = Object.Instantiate(prefab, transformParent);
-        panel.Setup(new NpcPanelSettings());
+        panel.Setup(new NpcPanelSettings()
+        {
+            Player = _player
+        });
         return panel;
     }
 }
