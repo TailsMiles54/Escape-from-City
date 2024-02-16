@@ -6,22 +6,27 @@ using Settings;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 public class NpcItem : MonoBehaviour
 {
     [SerializeField] private TMP_Text _titleTMP;
     [SerializeField] private Image _image;
     [SerializeField] private TMP_Text _second1TMP;
-    [SerializeField] private TMP_Text _button1Text;
-    [SerializeField] private Button _buttonBuy;
-    [SerializeField] private TMP_Text _button2Text;
-    [SerializeField] private Button _buttonQuest;
-    [SerializeField] private TMP_Text _button3Text;
-    [SerializeField] private Button _buttonSell;
 
     [SerializeField] private Transform _itemsParent;
 
     [SerializeField] private List<GameObject> _items = new List<GameObject>();
+    
+    [Tab("ButtonTexts")]
+    [SerializeField] private TMP_Text _button1Text;
+    [SerializeField] private TMP_Text _button2Text;
+    [SerializeField] private TMP_Text _button3Text;
+    [Tab("Buttons")]
+    [SerializeField] private Button _buttonBuy;
+    [SerializeField] private Button _buttonQuest;
+    [SerializeField] private Button _buttonSell;
+    
     private bool _inAnimationProcess;
 
     private TabType _currentTabType;
