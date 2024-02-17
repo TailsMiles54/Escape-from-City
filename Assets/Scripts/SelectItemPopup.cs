@@ -1,3 +1,5 @@
+using System;
+
 public class SelectItemPopup : Popup<SelectItemPopupSetting>
 {
     public override void Setup(SelectItemPopupSetting setting)
@@ -8,5 +10,4 @@ public class SelectItemPopup : Popup<SelectItemPopupSetting>
 
 public class SelectItemPopupSetting : BasePopupSettings
 {
-    
-} 
+}
