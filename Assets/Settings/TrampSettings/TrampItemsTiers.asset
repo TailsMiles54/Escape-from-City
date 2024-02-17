@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15498118495c4d9c9635b8c766469f5d, type: 3}
+  m_Name: TrampItemsTiers
+  m_EditorClassIdentifier: 
+  _weaponsTiers:
+  - MinLevel: 0
+    Items:
+    - ItemType: 805
+      RandomChance: 0
+      SpawnChance: 0
+    - ItemType: 803
+      RandomChance: 0
+      SpawnChance: 0
+  - MinLevel: 10
+    Items:
+    - ItemType: 804
+      RandomChance: 0
+      SpawnChance: 0
+    - ItemType: 806
+      RandomChance: 0
+      SpawnChance: 0
+  - MinLevel: 15
+    Items:
+    - ItemType: 801
+      RandomChance: 0
+      SpawnChance: 0
+    - ItemType: 802
+      RandomChance: 0
+      SpawnChance: 0
+  _bulletproofVestTiers:
+  - MinLevel: 0
+    Items:
+    - ItemType: 401
+      RandomChance: 0
+      SpawnChance: 0
+  - MinLevel: 10
+    Items:
+    - ItemType: 402
+      RandomChance: 0
+      SpawnChance: 0
+  _helmetTiers:
+  - MinLevel: 0
+    Items:
+    - ItemType: 426
+      RandomChance: 0
+      SpawnChance: 0
+  - MinLevel: 10
+    Items:
+    - ItemType: 427
+      RandomChance: 0
+      SpawnChance: 0
+  _backpackTiers:
+  - MinLevel: 0
+    Items: []
+  - MinLevel: 7
+    Items:
+    - ItemType: 451
+      RandomChance: 0
+      SpawnChance: 0
+  - MinLevel: 12
+    Items:
+    - ItemType: 452
+      RandomChance: 0
+      SpawnChance: 0
+  _trashTiers:
+  - MinLevel: 0
+    Items:
+    - ItemType: 101
+      RandomChance: 0
+      SpawnChance: 10
+    - ItemType: 102
+      RandomChance: 0
+      SpawnChance: 10
+    - ItemType: 301
+      RandomChance: 0
+      SpawnChance: 10
+  - MinLevel: 7
+    Items:
+    - ItemType: 303
+      RandomChance: 0
+      SpawnChance: 15
+    - ItemType: 302
+      RandomChance: 0
+      SpawnChance: 15
+    - ItemType: 301
+      RandomChance: 0
+      SpawnChance: 15
+    - ItemType: 501
+      RandomChance: 0
+      SpawnChance: 2
+    - ItemType: 304
+      RandomChance: 0
+      SpawnChance: 2
+  - MinLevel: 12
+    Items:
+    - ItemType: 501
+      RandomChance: 0
+      SpawnChance: 4
+    - ItemType: 304
+      RandomChance: 0
+      SpawnChance: 2
+    - ItemType: 305
+      RandomChance: 0
+      SpawnChance: 4
+    - ItemType: 306
+      RandomChance: 0
+      SpawnChance: 1
+  - MinLevel: 15
+    Items:
+    - ItemType: 501
+      RandomChance: 0
+      SpawnChance: 5
+    - ItemType: 304
+      RandomChance: 0
+      SpawnChance: 6
+    - ItemType: 306
+      RandomChance: 0
+      SpawnChance: 2
+    - ItemType: 305
+      RandomChance: 0
+      SpawnChance: 6

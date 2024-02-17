@@ -19,9 +19,7 @@ public class BlackTailsTools : MonoBehaviour
         
         foreach (var itemType in newItems)
         {
-            var itemSetting = itemType is ItemType.Ak74 or ItemType.M4A1  
-                ? ScriptableObject.CreateInstance<WeaponSetting>()
-                : ScriptableObject.CreateInstance<ItemSettings>();
+            var itemSetting = ScriptableObject.CreateInstance<ItemSettings>();
                 
             itemSetting.Init(itemType);
             AssetDatabase.CreateAsset(itemSetting, $"Assets/Settings/Items/{itemType.ToString()}.asset");

@@ -2,27 +2,37 @@ public enum ItemType
 {
     None = 0,
     
-    //Оружие
-    Ak74 = 701,
-    M4A1 = 702,
-    
     //Еда
-    Soda = 101,
-    Mayo = 102,
-    Clickers = 104,
+    Kickers = 101,
+    Hlep = 102,
+    JuiseAngry = 103,
+    TeaViruchay = 104,
     
     //Патроны
     Ammo545 = 201,
     Ammo556 = 202,
+    Ammo9 = 202,
     
     //Мусор
-    Tire = 301,
-    Battery9V = 302,
+    Wires = 301,
+    Nails = 302, 
+    Wire = 303,
+    GX100GraphicsCard = 304,
+    BoxE5Processor = 305,
+    GX200GraphicsCard = 306,
     
     //Снаряжение
-    HelmetModul3M = 401,
-    VestModul3M = 402,
-    Backpack = 403,
+    //Броники
+    Bronik = 401,
+    Scorlupa = 402,
+    
+    //Каски
+    Kartonka = 426,
+    Kartonka2U = 427,
+    
+    //Рюказаки
+    SchoolBackpack = 451,
+    TrampBackpack = 452,
     
     //Ключи
     LabCard = 501,
@@ -31,8 +41,14 @@ public enum ItemType
     Roubles = 601,
     
     //Медицина
-    AI = 705,
-    AI2 = 706,
-    Bandage = 703,
-    Tourniquet = 704,
+    AE52 = 701,
+    Bandage = 702,
+    
+    //Оружие
+    Ak74 = 801,
+    M4A1 = 802,
+    OC02 = 803,
+    MR18 = 804,
+    PM = 805,
+    Glock = 806,
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd68cc673d5b4d8ead39436dba6604f1, type: 3}
-  m_Name: Ak74
+  m_Name: BoxE5Processor
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Ak74
+  <Name>k__BackingField: BoxE5Processor
   <DefaultPrice>k__BackingField: 
   <Rarity>k__BackingField: 0
-  <ItemType>k__BackingField: 801
+  <ItemType>k__BackingField: 305
   <ItemCategoryType>k__BackingField: 0
   <Sprite>k__BackingField: {fileID: 0}
   <ItemSize>k__BackingField: 0

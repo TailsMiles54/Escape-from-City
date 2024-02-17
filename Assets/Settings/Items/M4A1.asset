@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001e36429b814302b7fb4b9bc98dc7d8, type: 3}
+  m_Script: {fileID: 11500000, guid: dd68cc673d5b4d8ead39436dba6604f1, type: 3}
   m_Name: M4A1
   m_EditorClassIdentifier: 
   <Name>k__BackingField: M4A1
   <DefaultPrice>k__BackingField: 
   <Rarity>k__BackingField: 0
-  <ItemType>k__BackingField: 702
+  <ItemType>k__BackingField: 802
+  <ItemCategoryType>k__BackingField: 0
   <Sprite>k__BackingField: {fileID: 0}
-  <ItemSize>k__BackingField: 8
-  <MaxInStack>k__BackingField: 1
-  <SpriteWithScope>k__BackingField: {fileID: 0}
+  <ItemSize>k__BackingField: 0
+  <MaxInStack>k__BackingField: 0
