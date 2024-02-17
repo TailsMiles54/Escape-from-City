@@ -11,7 +11,7 @@ public class NpcPanel : Panel<NpcPanelSettings>
         foreach (var npcSetting in npcSettings)
         {
             var npc = Instantiate(npcItemPrefab, _npcParent);
-            npc.Setup(npcSetting, settings.Player);
+            npc.Setup(npcSetting, settings.Player, settings.PopupController);
         }
     }
 }
@@ -19,4 +19,5 @@ public class NpcPanel : Panel<NpcPanelSettings>
 public class NpcPanelSettings : BasePanelSettings
 {
     public Player Player;
+    public PopupController PopupController;
 }

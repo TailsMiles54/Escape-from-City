@@ -48,11 +48,19 @@ public class Inventory
     public List<Item> Items { get; private set; } = new List<Item>();
 
     public event Action<Item> ItemAddedEvent; 
+    public event Action InventoryUpdated; 
     
     public void AddItem(Item item)
     {
         Items.Add(item);
         ItemAddedEvent?.Invoke(item);
+        InventoryUpdated?.Invoke();
+    }
+    
+    public void RemoveItem(Item item)
+    {
+        Items.Remove(item);
+        InventoryUpdated?.Invoke();
     }
 
     public void StartSetup()
