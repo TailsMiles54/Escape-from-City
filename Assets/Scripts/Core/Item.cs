@@ -14,5 +14,11 @@ public class Item
     {
         item1.Value += item2.Value;
         return item1;
-    } 
+    }
+
+    public Item(ItemType itemType, int value = 1)
+    {
+        ItemType = itemType;
+        Value = value;
+    }
 }
