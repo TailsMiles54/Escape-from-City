@@ -20,11 +20,15 @@ namespace UI
         private LocationType _selectedLocationType;
         private RaidTime _selectedDateTime;
         private CharacterType _selectedCharacterType;
+        private EquipmentReserveManager _equipmentReserveManager;
         
         private List<LocationPanel> _locationPanels = new List<LocationPanel>();
         
         public override void Setup(StartRaidPanelSettings settings)
         {
+            _equipmentReserveManager = settings.EquipmentReserveManager;
+            _selectedCharacterType = CharacterType.Character;
+            
             SetupCharactersPanel(settings);
 
             EquipmentPanelsSetup(settings);
@@ -32,6 +36,8 @@ namespace UI
             TimePanelsSetup();
 
             LocationPanelsSetup();
+
+            ShowEquipment();
             
             _startRaidButton.onClick.AddListener((() =>
             {
@@ -90,11 +96,69 @@ namespace UI
             _dayTimePanels.Activate(true);
         }
 
-        private void EnableEquipment(bool state)
+        private void EnableEquipment()
         {
+            var state = _selectedCharacterType == CharacterType.Character;
             foreach (var equipmentPanelSetting in _equipmentPanels)
             {
                 equipmentPanelSetting.EquipmentPanel.Activate(state);
+            }
+        }
+
+        private void ShowEquipment()
+        {
+            var equipment = _equipmentReserveManager.ReservedItems[_selectedCharacterType];
+            
+            foreach (var equipmentPanelSetting in _equipmentPanels)
+            {
+                var panel = equipmentPanelSetting.EquipmentPanel;
+                
+                switch (equipmentPanelSetting.ItemCategoryType)
+                {
+                    case ItemCategoryType.Weapon:
+                        if(equipment.FirstWeapon == null)
+                        {
+                            panel.SetEmpty();
+                            break;
+                        }
+                        
+                        panel.SetItem(equipment.FirstWeapon.ItemType);
+                        break;
+                    case ItemCategoryType.Helmet:
+                        if(equipment.Helmet == null)
+                        {
+                            panel.SetEmpty();
+                            break;
+                        }
+
+
+                        panel.SetItem(equipment.Helmet.ItemType);
+                        break;
+                    case ItemCategoryType.Backpack:
+                        if (equipment.Backpack == null)
+                        {
+                            panel.SetEmpty();
+                            break;
+                        }
+
+
+                        panel.SetItem(equipment.Backpack.ItemType);
+                        break;
+                    case ItemCategoryType.ChestRig:
+                        break;
+                    case ItemCategoryType.ArmorVests:
+                        if(equipment.ArmorVests == null)
+                        {
+                            panel.SetEmpty();
+                            break;
+                        }
+
+
+                        panel.SetItem(equipment.ArmorVests.ItemType);
+                        break;
+                    case ItemCategoryType.HeadSet:
+                        break;
+                }
             }
         }
 
@@ -105,17 +169,19 @@ namespace UI
                 _selectedCharacterType = CharacterType.Character;
                 _characterPanel.Activate(true);
                 _trampPanel.Activate(false);
-                EnableEquipment(true);
+                EnableEquipment();
+                ShowEquipment();
             });
             _characterPanel.Activate(true);
-            EnableEquipment(true);
+            EnableEquipment();
 
             _trampPanel.Setup("OLEG EBLAN", SettingsProvider.Get<PrefabSettings>().TrampImage, () =>
             {
                 _selectedCharacterType = CharacterType.Tramp;
                 _characterPanel.Activate(false);
                 _trampPanel.Activate(true);
-                EnableEquipment(false);
+                EnableEquipment();
+                ShowEquipment();
             });
             _trampPanel.Activate(false);
         }
@@ -133,5 +199,6 @@ namespace UI
         public Player Player;
         public PopupController PopupController;
         public RaidManager RaidManager;
+        public EquipmentReserveManager EquipmentReserveManager;
     }
 }

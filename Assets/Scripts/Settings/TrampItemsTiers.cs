@@ -24,7 +24,12 @@ public class TrampItemsTiers : ScriptableObject
     {
         var level = player.Level;
         var tiers = _weaponsTiers.Where(x => x.MinLevel <= level).ToList();
-        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType));
+        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType)).ToList();
+
+        if (items.Count == 0)
+            return null;
+
+
         var item = items.GetRandomElement();
         return new Item(item);
     }
@@ -33,7 +38,12 @@ public class TrampItemsTiers : ScriptableObject
     {
         var level = player.Level;
         var tiers = _bulletproofVestTiers.Where(x => x.MinLevel <= level).ToList();
-        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType));
+        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType)).ToList();
+
+        if (items.Count == 0)
+            return null;
+
+
         var item = items.GetRandomElement();
         return new Item(item);
     }
@@ -41,7 +51,12 @@ public class TrampItemsTiers : ScriptableObject
     {
         var level = player.Level;
         var tiers = _helmetTiers.Where(x => x.MinLevel <= level).ToList();
-        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType));
+        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType)).ToList();
+
+        if (items.Count == 0)
+            return null;
+
+
         var item = items.GetRandomElement();
         return new Item(item);
     }
@@ -49,7 +64,11 @@ public class TrampItemsTiers : ScriptableObject
     {
         var level = player.Level;
         var tiers = _backpackTiers.Where(x => x.MinLevel <= level).ToList();
-        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType));
+        var items = tiers.SelectMany(x => x.Items.Select(y => y.ItemType)).ToList();
+
+        if (items.Count == 0)
+            return null;
+        
         var item = items.GetRandomElement();
         return new Item(item);
     }

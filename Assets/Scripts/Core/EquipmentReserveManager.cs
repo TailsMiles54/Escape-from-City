@@ -17,7 +17,7 @@ public class EquipmentReserveManager : IInitializable
     
     public void Initialize()
     {
-        
+        GenerateNewEquipmentForTramp();
     }
 
     public void GenerateNewEquipmentForTramp()
@@ -28,7 +28,6 @@ public class EquipmentReserveManager : IInitializable
         trampItems.Helmet = trampRandomSettings.GetRandomHelmet(_player);
         trampItems.Backpack = trampRandomSettings.GetRandomBackpack(_player);
         trampItems.ArmorVests = trampRandomSettings.GetRandomBulletproof(_player);
-
     }
 }
 

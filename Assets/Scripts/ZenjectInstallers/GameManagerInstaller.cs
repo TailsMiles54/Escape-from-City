@@ -7,6 +7,7 @@ public class GameManagerInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<GameManager>().AsCached().NonLazy();
         Container.Bind<RaidManager>().AsCached().NonLazy();
+        Container.BindInterfacesAndSelfTo<EquipmentReserveManager>().AsCached().NonLazy();
         Container.BindInterfacesAndSelfTo<ShelterManager>().AsCached().NonLazy();
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Settings;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,5 +22,17 @@ public class EquipmentPanel : MonoBehaviour
     {
         _button.interactable = state;
         _imageBackground.SetActive(!state);
+    }
+
+    public void SetItem(ItemType itemType)
+    {
+        _nameField.text = itemType.ToString();
+        _image.sprite = SettingsProvider.Get<ItemsList>().GetItem(itemType).Sprite;
+    }
+
+    public void SetEmpty()
+    {
+        _nameField.text = "Empty";
+        _image.sprite = SettingsProvider.Get<PrefabSettings>().TestImage;
     }
 }
