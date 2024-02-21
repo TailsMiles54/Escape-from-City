@@ -33,4 +33,16 @@ MonoBehaviour:
     Value: 1
   - ItemType: 402
     Value: 1
+  - ItemType: 801
+    Value: 1
+  - ItemType: 802
+    Value: 1
+  - ItemType: 803
+    Value: 1
+  - ItemType: 804
+    Value: 1
+  - ItemType: 805
+    Value: 1
+  - ItemType: 806
+    Value: 1
   <Sprite>k__BackingField: {fileID: 0}

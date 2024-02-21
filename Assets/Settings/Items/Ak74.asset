@@ -17,6 +17,6 @@ MonoBehaviour:
   <Rarity>k__BackingField: 0
   <ItemType>k__BackingField: 801
   <ItemCategoryType>k__BackingField: 0
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: 666758919, guid: a324fc4912a6f694d883eb049a44ad14, type: 3}
   <ItemSize>k__BackingField: 0
   <MaxInStack>k__BackingField: 0
