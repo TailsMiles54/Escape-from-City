@@ -7,6 +7,7 @@ public class Item
 {
     public ItemType ItemType;
     public int Value;
+    public bool Reserved;
     public ItemCategoryType ItemCategoryType => Setting.ItemCategoryType;
     public ItemSettings Setting => SettingsProvider.Get<ItemsList>().GetItem(ItemType);
 

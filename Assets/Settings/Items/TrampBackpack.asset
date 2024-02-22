@@ -16,7 +16,7 @@ MonoBehaviour:
   <DefaultPrice>k__BackingField: 
   <Rarity>k__BackingField: 0
   <ItemType>k__BackingField: 452
-  <ItemCategoryType>k__BackingField: 0
+  <ItemCategoryType>k__BackingField: 2
   <Sprite>k__BackingField: {fileID: 0}
   <ItemSize>k__BackingField: 0
   <MaxInStack>k__BackingField: 0

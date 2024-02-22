@@ -57,7 +57,9 @@ namespace UI
                         {
                             Player = settings.Player,
                             EquipmentReserveManager = settings.EquipmentReserveManager,
-                            ItemCategoryType = equipmentPanelSetting.ItemCategoryType
+                            PopupController = settings.PopupController,
+                            ItemCategoryType = equipmentPanelSetting.ItemCategoryType,
+                            UIService = settings.UIService,
                         });
                     });
             }
@@ -205,5 +207,6 @@ namespace UI
         public PopupController PopupController;
         public RaidManager RaidManager;
         public EquipmentReserveManager EquipmentReserveManager;
+        public UIService UIService;
     }
 }

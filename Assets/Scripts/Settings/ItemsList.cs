@@ -14,6 +14,16 @@ namespace Settings
             Items.Add(itemSetting);
         }
 
-        public ItemSettings GetItem(ItemType itemType) => Items.First(x => x.ItemType == itemType);
+        public ItemSettings GetItem(ItemType itemType)
+        {
+            var itemSetting = Items.FirstOrDefault(x => x.ItemType == itemType);
+
+            if (itemSetting == null)
+            {
+                Debug.LogWarning($"Item setting not found. ItemType: {itemType}");
+            }
+            
+            return itemSetting;
+        }
     }
 }

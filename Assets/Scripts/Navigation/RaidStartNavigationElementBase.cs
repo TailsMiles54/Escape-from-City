@@ -9,6 +9,7 @@ public class RaidStartNavigationElementBase : NavigationElementBase
     [Inject] private RaidManager _raidManager;
     [Inject] private GameManager _gameManager;
     [Inject] private EquipmentReserveManager _equipmentReserveManager;
+    [Inject] private UIService _uiService;
     
     public RaidStartNavigationElementBase() 
     {
@@ -29,7 +30,8 @@ public class RaidStartNavigationElementBase : NavigationElementBase
             Player = _player,
             PopupController = _popupController,
             RaidManager = _raidManager,
-            EquipmentReserveManager = _equipmentReserveManager
+            EquipmentReserveManager = _equipmentReserveManager,
+            UIService = _uiService
         });
         return panel;
     }

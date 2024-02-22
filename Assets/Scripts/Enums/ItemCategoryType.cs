@@ -5,5 +5,10 @@ public enum ItemCategoryType
     Backpack,
     ChestRig,
     ArmorVests,
-    HeadSet
+    HeadSet,
+    Med,
+    Eat,
+    Money,
+    Trash,
+    Ammo
 }
