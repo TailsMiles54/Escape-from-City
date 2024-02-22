@@ -53,7 +53,12 @@ namespace UI
                     SettingsProvider.Get<PrefabSettings>().TestImage, 
                     () =>
                     {
-                        settings.PopupController.ShowPopup(new SelectItemPopupSetting());
+                        settings.PopupController.ShowPopup(new SelectItemPopupSetting()
+                        {
+                            Player = settings.Player,
+                            EquipmentReserveManager = settings.EquipmentReserveManager,
+                            ItemCategoryType = equipmentPanelSetting.ItemCategoryType
+                        });
                     });
             }
         }
