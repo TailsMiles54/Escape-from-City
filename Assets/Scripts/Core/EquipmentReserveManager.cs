@@ -22,69 +22,62 @@ public class EquipmentReserveManager : IInitializable
         GenerateNewEquipmentForTramp();
     }
 
-    public void SelectItem(Item item)
+    public void SelectItem(Item selectedItem)
     {
-        var characterItems = ReservedItems[CharacterType.Character];
-        switch (item.Setting.ItemCategoryType)
-        {
-            case ItemCategoryType.Weapon:
-                if(characterItems.FirstWeapon != null)
-                    characterItems.FirstWeapon.Reserved = false;
-                
-                item.Reserved = true;
-                characterItems.FirstWeapon = item;
-                break;
-            case ItemCategoryType.Helmet:
-                if(characterItems.Helmet != null)
-                    characterItems.Helmet.Reserved = false;
-                
-                item.Reserved = true;
-                characterItems.Helmet = item;
-                break;
-            case ItemCategoryType.Backpack:
-                if(characterItems.Backpack != null)
-                    characterItems.Backpack.Reserved = false;
-                
-                item.Reserved = true;
-                characterItems.Backpack = item;
-                break;
-            case ItemCategoryType.ArmorVests:
-                if(characterItems.ArmorVests != null)
-                    characterItems.ArmorVests.Reserved = false;
-                
-                item.Reserved = true;
-                characterItems.ArmorVests = item;
-                break;
-        }
+        var characterItem = ReservedItems[CharacterType.Character].Items.First(x => x.ItemCategoryType == selectedItem.ItemCategoryType);
 
+        var item = characterItem.Item;
+        
+        if(characterItem.Item != null)
+            item.Reserved = false;
+            
+        selectedItem.Reserved = true;
+        characterItem.Item = selectedItem;
     }
 
     public void GenerateNewEquipmentForTramp()
     {
         var trampRandomSettings = SettingsProvider.Get<TrampItemsTiers>();
         var trampItems = ReservedItems[CharacterType.Tramp];
-        trampItems.FirstWeapon = trampRandomSettings.GetRandomWeapon(_player);
-        trampItems.Helmet = trampRandomSettings.GetRandomHelmet(_player);
-        trampItems.Backpack = trampRandomSettings.GetRandomBackpack(_player);
-        trampItems.ArmorVests = trampRandomSettings.GetRandomBulletproof(_player);
+        trampItems.Items.First(x => x.ItemCategoryType == ItemCategoryType.Weapon).Item = trampRandomSettings.GetRandomWeapon(_player);
+        trampItems.Items.First(x => x.ItemCategoryType == ItemCategoryType.Helmet).Item = trampRandomSettings.GetRandomHelmet(_player);
+        trampItems.Items.First(x => x.ItemCategoryType == ItemCategoryType.Backpack).Item = trampRandomSettings.GetRandomBackpack(_player);
+        trampItems.Items.First(x => x.ItemCategoryType == ItemCategoryType.ArmorVests).Item = trampRandomSettings.GetRandomBulletproof(_player);
     }
 }
 
 public class ReservedItems
 {
-    public Item FirstWeapon;
-    public Item Helmet;
-    public Item Backpack;
-    public Item ArmorVests;
+    public List<ReserveItem> Items = new List<ReserveItem>()
+    {
+        new ReserveItem(ItemCategoryType.Weapon),
+        new ReserveItem(ItemCategoryType.Helmet),
+        new ReserveItem(ItemCategoryType.Backpack),
+        new ReserveItem(ItemCategoryType.ArmorVests),
+    };
 
     public List<Item> ItemsInBackpack = new List<Item>();
 
     public void Clear()
     {
-        FirstWeapon = null;
-        Helmet = null;
-        Backpack = null;
-        ArmorVests = null;
+        Items = new List<ReserveItem>()
+        {
+            new ReserveItem(ItemCategoryType.Weapon),
+            new ReserveItem(ItemCategoryType.Helmet),
+            new ReserveItem(ItemCategoryType.Backpack),
+            new ReserveItem(ItemCategoryType.ArmorVests),
+        };
         ItemsInBackpack = new List<Item>();
+    }
+}
+
+public class ReserveItem
+{
+    public ItemCategoryType ItemCategoryType { get; private set; }
+    public Item Item;
+
+    public ReserveItem(ItemCategoryType category)
+    {
+        ItemCategoryType = category;
     }
 }

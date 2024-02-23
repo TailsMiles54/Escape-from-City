@@ -11,12 +11,15 @@ namespace UI
     {
         [SerializeField] private CharacterPanel _characterPanel;
         [SerializeField] private CharacterPanel _trampPanel;
-        [SerializeField] private List<EquipmentPanelSetting> _equipmentPanels;
+        [SerializeField] private Transform _equipmentPanelsParent;
         [SerializeField] private TimePanel _dayTimePanels;
         [SerializeField] private TimePanel _nightTimePanels;
         [SerializeField] private Transform _locationsParent;
         [SerializeField] private Button _startRaidButton;
-
+        
+        [SerializeField] private EquipmentPanel _equipmentPanel;
+        
+        private List<EquipmentPanel> _equipments = new List<EquipmentPanel>();
         private LocationType _selectedLocationType;
         private RaidTime _selectedDateTime;
         private CharacterType _selectedCharacterType;
@@ -28,10 +31,10 @@ namespace UI
         {
             _equipmentReserveManager = settings.EquipmentReserveManager;
             _selectedCharacterType = CharacterType.Character;
-            
-            SetupCharactersPanel(settings);
 
             EquipmentPanelsSetup(settings);
+            
+            SetupCharactersPanel(settings);
 
             TimePanelsSetup();
 
@@ -47,9 +50,13 @@ namespace UI
 
         private void EquipmentPanelsSetup(StartRaidPanelSettings settings)
         {
-            foreach (var equipmentPanelSetting in _equipmentPanels)
+            var categories = settings.EquipmentReserveManager.ReservedItems[CharacterType.Character].Items
+                .Select(x => x.ItemCategoryType).ToList();
+            foreach (var categoryType in categories)
             {
-                equipmentPanelSetting.EquipmentPanel.Setup(equipmentPanelSetting.ItemCategoryType.ToString(),
+                var equipmentPanelSetting = Instantiate(_equipmentPanel, _equipmentPanelsParent);
+                
+                equipmentPanelSetting.Setup(categoryType.ToString(), categoryType,
                     SettingsProvider.Get<PrefabSettings>().TestImage, 
                     () =>
                     {
@@ -62,6 +69,8 @@ namespace UI
                             UIService = settings.UIService,
                         });
                     });
+                
+                _equipments.Add(equipmentPanelSetting);
             }
         }
 
@@ -106,9 +115,9 @@ namespace UI
         private void EnableEquipment()
         {
             var state = _selectedCharacterType == CharacterType.Character;
-            foreach (var equipmentPanelSetting in _equipmentPanels)
+            foreach (var panel in _equipments)
             {
-                equipmentPanelSetting.EquipmentPanel.Activate(state);
+                panel.Activate(state);
             }
         }
 
@@ -116,56 +125,18 @@ namespace UI
         {
             var equipment = _equipmentReserveManager.ReservedItems[_selectedCharacterType];
             
-            foreach (var equipmentPanelSetting in _equipmentPanels)
+            foreach (var panel in _equipments)
             {
-                var panel = equipmentPanelSetting.EquipmentPanel;
+                var itemType = panel.ItemCategoryType;
+                var item = equipment.Items.First(x => x.ItemCategoryType == itemType).Item;
                 
-                switch (equipmentPanelSetting.ItemCategoryType)
+                if(item == null)
                 {
-                    case ItemCategoryType.Weapon:
-                        if(equipment.FirstWeapon == null)
-                        {
-                            panel.SetEmpty();
-                            break;
-                        }
-                        
-                        panel.SetItem(equipment.FirstWeapon.ItemType);
-                        break;
-                    case ItemCategoryType.Helmet:
-                        if(equipment.Helmet == null)
-                        {
-                            panel.SetEmpty();
-                            break;
-                        }
-
-
-                        panel.SetItem(equipment.Helmet.ItemType);
-                        break;
-                    case ItemCategoryType.Backpack:
-                        if (equipment.Backpack == null)
-                        {
-                            panel.SetEmpty();
-                            break;
-                        }
-
-
-                        panel.SetItem(equipment.Backpack.ItemType);
-                        break;
-                    case ItemCategoryType.ChestRig:
-                        break;
-                    case ItemCategoryType.ArmorVests:
-                        if(equipment.ArmorVests == null)
-                        {
-                            panel.SetEmpty();
-                            break;
-                        }
-
-
-                        panel.SetItem(equipment.ArmorVests.ItemType);
-                        break;
-                    case ItemCategoryType.HeadSet:
-                        break;
+                    panel.SetEmpty();
+                    break;
                 }
+                        
+                panel.SetItem(item.ItemType);
             }
         }
 
@@ -191,13 +162,6 @@ namespace UI
                 ShowEquipment();
             });
             _trampPanel.Activate(false);
-        }
-
-        [Serializable]
-        public class EquipmentPanelSetting
-        {
-            public ItemCategoryType ItemCategoryType;
-            public EquipmentPanel EquipmentPanel;
         }
     }
 

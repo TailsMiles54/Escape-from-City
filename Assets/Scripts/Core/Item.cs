@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class Item
 {
+    public string Name => ItemType.ToString();
     public ItemType ItemType;
     public int Value;
     public bool Reserved;
