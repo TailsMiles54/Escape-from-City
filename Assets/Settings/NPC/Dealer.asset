@@ -18,5 +18,30 @@ MonoBehaviour:
     \u0432\u0437\u044F\u0442\u044C"
   <Price>k__BackingField: 1
   <NpcType>k__BackingField: 1
-  <ItemCategory>k__BackingField: 
+  <ItemCategory>k__BackingField: 0600000007000000090000000b000000
+  <ItemSell>k__BackingField:
+  - ItemType: 101
+    Value: 0
+    Reserved: 0
+  - ItemType: 102
+    Value: 0
+    Reserved: 0
+  - ItemType: 103
+    Value: 0
+    Reserved: 0
+  - ItemType: 501
+    Value: 0
+    Reserved: 0
+  - ItemType: 304
+    Value: 0
+    Reserved: 0
+  - ItemType: 302
+    Value: 0
+    Reserved: 0
+  - ItemType: 701
+    Value: 0
+    Reserved: 0
+  - ItemType: 702
+    Value: 0
+    Reserved: 0
   <Sprite>k__BackingField: {fileID: 0}

@@ -67,4 +67,28 @@ public class SaveManager
             shelterUpgrades = new Dictionary<ShelterUpgradeType, int>();
         }
     }
+
+    public void SaveReservedItems(Dictionary<CharacterType, ReservedItems> reservedItemsMap)
+    {
+        SaveData(reservedItemsMap, "ReservedItems.json");
+    }
+
+    public void LoadReservedItemsData(out Dictionary<CharacterType, ReservedItems> reservedItemsMap)
+    {
+        string path = Path.Combine(Application.persistentDataPath, "ReservedItems.json");
+
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            reservedItemsMap = JsonConvert.DeserializeObject<Dictionary<CharacterType, ReservedItems>>(json);
+        }
+        else
+        {
+            reservedItemsMap = new Dictionary<CharacterType, ReservedItems>()
+            {
+                { CharacterType.Character, new ReservedItems() },
+                { CharacterType.Tramp, new ReservedItems() },
+            };
+        }
+    }
 }

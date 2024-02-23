@@ -6,6 +6,6 @@ public class PlayerInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<Player>().FromNew().AsCached().NonLazy();
+        Container.BindInterfacesAndSelfTo<Player>().FromNew().AsCached().NonLazy();
     }
 }

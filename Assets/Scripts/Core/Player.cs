@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Zenject;
 
-public class Player
+public class Player : IInitializable, IDisposable
 {
     [Inject] private SaveManager _saveManager;
     
@@ -39,6 +39,17 @@ public class Player
             _saveManager.SavePlayerData();
         }
     }
+
+    public void Initialize()
+    {
+        SetupFromSave();
+        Inventory.InventoryUpdated += _saveManager.SavePlayerData;
+    }
+
+    public void Dispose()
+    {
+        Inventory.InventoryUpdated -= _saveManager.SavePlayerData;
+    }
 }
 
 [Serializable]
@@ -47,13 +58,11 @@ public class Inventory
     public int AvailableSlots;
     public List<Item> Items { get; private set; } = new List<Item>();
 
-    public event Action<Item> ItemAddedEvent; 
     public event Action InventoryUpdated; 
     
     public void AddItem(Item item)
     {
         Items.Add(item);
-        ItemAddedEvent?.Invoke(item);
         InventoryUpdated?.Invoke();
     }
     

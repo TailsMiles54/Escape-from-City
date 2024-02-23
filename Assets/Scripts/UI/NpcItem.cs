@@ -114,7 +114,7 @@ public class NpcItem : MonoBehaviour
     {
         var traderCategories = _traderSetting.ItemCategory;
             
-        var playerItemsInCategories = _player.Inventory.Items.Where(x => traderCategories.Contains(x.ItemCategoryType)).ToList();
+        var playerItemsInCategories = _player.Inventory.Items.Where(x => traderCategories.Contains(x.ItemCategoryType) && !x.Reserved).ToList();
             
         var inventoryElementPrefab = SettingsProvider.Get<PrefabSettings>().InventoryElement;
             

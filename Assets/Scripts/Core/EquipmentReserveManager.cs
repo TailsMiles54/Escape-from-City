@@ -10,16 +10,19 @@ public class EquipmentReserveManager : IInitializable
     [Inject] private UIService _uiService;
     [Inject] private Player _player;
 
-    public Dictionary<CharacterType, ReservedItems> ReservedItems { get; private set; } =
-        new Dictionary<CharacterType, ReservedItems>()
-        {
-            { CharacterType.Character , new ReservedItems()},
-            { CharacterType.Tramp , new ReservedItems()},
-        };
+    
+    //todo убрать отсюда чарактера и у него чисто флагом в инвентаре помечать
+    public Dictionary<CharacterType, ReservedItems> ReservedItems { get; private set; }
     
     public void Initialize()
     {
-        GenerateNewEquipmentForTramp();
+        _saveManager.LoadReservedItemsData(out var reservedItemsMap);
+
+        ReservedItems = reservedItemsMap;
+        Debug.Log(ReservedItems[CharacterType.Character].Items.Count);
+        
+        if(reservedItemsMap[CharacterType.Tramp].Items.All(x => x.Item == null))
+            GenerateNewEquipmentForTramp();
     }
 
     public void SelectItem(Item selectedItem)
@@ -33,6 +36,8 @@ public class EquipmentReserveManager : IInitializable
             
         selectedItem.Reserved = true;
         characterItem.Item = selectedItem;
+        SaveReservedItems();
+        Debug.Log(ReservedItems[CharacterType.Character].Items.Count);
     }
 
     public void GenerateNewEquipmentForTramp()
@@ -43,6 +48,15 @@ public class EquipmentReserveManager : IInitializable
         trampItems.Items.First(x => x.ItemCategoryType == ItemCategoryType.Helmet).Item = trampRandomSettings.GetRandomHelmet(_player);
         trampItems.Items.First(x => x.ItemCategoryType == ItemCategoryType.Backpack).Item = trampRandomSettings.GetRandomBackpack(_player);
         trampItems.Items.First(x => x.ItemCategoryType == ItemCategoryType.ArmorVests).Item = trampRandomSettings.GetRandomBulletproof(_player);
+        
+        SaveReservedItems();
+        Debug.Log(ReservedItems[CharacterType.Character].Items.Count);
+    }
+
+    public void SaveReservedItems()
+    {
+        _saveManager.SaveReservedItems(ReservedItems);
+        Debug.Log(ReservedItems[CharacterType.Character].Items.Count);
     }
 }
 
