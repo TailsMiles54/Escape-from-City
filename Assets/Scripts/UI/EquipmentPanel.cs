@@ -19,6 +19,7 @@ public class EquipmentPanel : MonoBehaviour
         ItemCategoryType = categoryType;
         _nameField.text = panelText;
         _image.sprite = image;
+        _infoField.text = String.Empty;
         _button.onClick.AddListener(clickAction.Invoke);
     }
 
@@ -36,7 +37,7 @@ public class EquipmentPanel : MonoBehaviour
 
     public void SetEmpty()
     {
-        _infoField.text = "";
+        _infoField.text = String.Empty;
         _image.sprite = SettingsProvider.Get<PrefabSettings>().TestImage;
     }
 }
