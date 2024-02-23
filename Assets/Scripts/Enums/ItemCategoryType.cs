@@ -10,5 +10,6 @@ public enum ItemCategoryType
     Eat,
     Money,
     Trash,
-    Ammo
+    Ammo,
+    Keys
 }
